@@ -1,0 +1,34 @@
+/**
+ * Grid
+ */
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: rem(-$grid-gutter / 2);
+  margin-left: rem(-$grid-gutter / 2);
+}
+
+.col {
+  padding-right: rem($grid-gutter / 2);
+  padding-left: rem($grid-gutter / 2);
+  width: 100%;
+}
+
+// Generate .col classes
+@for $i from 1 through $grid-columns {
+  .col--#{$i} {
+    width: percentage($i / $grid-columns);
+  }
+}
+
+// Generate .col classes for each breakpoints
+@each $name, $bp in $grid-breakpoints {
+  @include bp-gt($bp) {
+    @for $i from 1 through $grid-columns {
+      .col--#{$i}#{$name} {
+        width: percentage($i / $grid-columns);
+      }
+    }
+  }
+}

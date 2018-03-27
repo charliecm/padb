@@ -1,0 +1,53 @@
+/**
+ * Header
+ */
+
+.header {
+  margin-bottom: 3rem;
+  background-color: $color-gray-4;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+}
+
+.header-wrap {
+  display: flex;
+  align-items: baseline;
+}
+
+.header-title {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.header-title > a {
+  color: inherit;
+}
+
+.header-nav {
+  flex-shrink: 0;
+
+  ul {
+    display: flex;
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  a {
+    display: block;
+    padding: .5rem 1.5rem .5rem 0;
+
+    &.-active {
+      color: $color-text;
+      font-weight: bold;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    li:last-child & {
+      padding-right: 0;
+    }
+  }
+}

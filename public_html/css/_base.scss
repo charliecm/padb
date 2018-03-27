@@ -1,0 +1,61 @@
+/**
+ * Base Styles
+ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  font-size: 100%;
+}
+
+body {
+  margin: 0 0 6rem;
+  background-color: $color-bg;
+  height: 100%;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  line-height: 1;
+  color: $color-text;
+  font-family: $font-primary;
+  font-size: 1rem;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); // sass-lint:disable-line no-color-literals
+}
+
+::selection, ::-moz-selection {
+  background-color: $color-black;
+  color: $color-white;
+}
+
+img {
+  vertical-align: middle;
+}
+
+// Apply base typography + drop margin
+p, h1, h2, h3, blockquote, ul, ol {
+  margin-top: 0;
+  margin-bottom: rem($drop-margin);
+  line-height: $type-leading;
+  font-size: rem($type-base);
+}
+
+h1 {
+  // font-family: $font-secondary;
+  font-size: rem($type-scale-3);
+}
+
+h2 {
+  // font-family: $font-secondary;
+  font-size: rem($type-scale-2);
+}
+
+h3 {
+  // font-family: $font-secondary;
+  font-size: rem($type-scale-1);
+}
+
+small {
+  font-size: rem($type-scale-0);
+}

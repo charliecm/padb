@@ -1,0 +1,57 @@
+/**
+ * Functions
+ */
+
+$_base-em: 16px;
+
+// Converts unit to rem
+@function rem($value) {
+  @if (unit($value) == 'rem') {
+    @return $value;
+  }
+  @return ($value / $_base-em) + 0rem; // sass-lint:disable-line zero-unit
+}
+
+// Converts unit to em
+@function em($value) {
+  @if (unit($value) == 'em') {
+    @return $value;
+  }
+  @return ($value / $_base-em) + 0em; // sass-lint:disable-line zero-unit
+}
+
+// Responsive (greater than)
+@mixin bp-gt($width) {
+  @media only screen and (min-width: ($width + 1)) {
+    @content;
+  }
+}
+
+// Responsive (less than)
+@mixin bp-lt($width) {
+  @media only screen and (max-width: $width) {
+    @content;
+  }
+}
+
+// Responsive (between)
+@mixin bp-bt($width-min, $width-max) {
+  @media only screen and (min-width: ($width-min + 1)) and (max-width: $width-max) {
+    @content;
+  }
+}
+
+// https://css-tricks.com/snippets/sass/power-function/
+@function pow($number, $exponent) {
+  $value: 1;
+  @if $exponent > 0 {
+    @for $i from 1 through $exponent {
+      $value: $value * $number;
+    }
+  } @else if $exponent < 0 {
+    @for $i from 1 through -$exponent {
+      $value: $value / $number;
+    }
+  }
+  @return $value;
+}

@@ -1,0 +1,37 @@
+/**
+ * Button
+ */
+
+.btn {
+  display: inline-block;
+  position: relative;
+  border: 0;
+  border-radius: 3px;
+  background-color: $color-black;
+  cursor: pointer;
+  padding: .5rem 1rem;
+  color: $color-white;
+  -webkit-appearance: none;
+
+  &:hover, &:active, &:focus {
+    background-color: $color-gray-1;
+    text-decoration: none;
+    color: $color-white;
+  }
+
+  &:active {
+    top: 2px;
+  }
+}
+
+.btn--destructive {
+  background-color: $color-error;
+
+  &:hover, &:active {
+    background-color: $color-error-hover;
+  }
+}
+
+.btn--small {
+  padding: .25rem .5rem;
+}

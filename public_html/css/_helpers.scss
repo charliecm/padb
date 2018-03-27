@@ -1,0 +1,52 @@
+/**
+ * Helper Classes
+ */
+
+.clearfix::after {
+  display: table;
+  clear: both;
+  content: '';
+}
+
+.clear {
+  clear: both;
+}
+
+.fill-width {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-success {
+  color: $color-success;
+}
+
+.text-error {
+  color: $color-error;
+}
+
+.notice {
+  background-color: $color-gray-4;
+  padding: .5rem 1rem;
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+// Lets screen reader to describe non-text elements
+.visually-hidden {
+  position: absolute;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  direction: ltr;
+  clip: rect(0 0 0 0);
+}

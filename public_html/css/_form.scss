@@ -1,0 +1,111 @@
+/**
+ * Form
+ */
+
+input:focus, textarea:focus, select:focus {
+  outline: 0;
+  box-shadow: 0 0 0 3px $color-focus;
+}
+
+input:not([type='submit']):not([type='radio']), textarea, select {
+  display: block;
+  position: relative;
+  border: solid 1px $color-gray-3;
+  border-radius: 3px;
+  padding: .5rem;
+  -webkit-appearance: none;
+}
+
+.form--small {
+  max-width: 300px;
+}
+
+.form-fieldset {
+  margin-bottom: 1.5rem;
+}
+
+.form-field {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: .5rem;
+}
+
+.form-label--index {
+  margin-right: 1rem;
+  width: 2rem;
+  min-width: 0;
+  text-align: right;
+}
+
+.form-label--required::after {
+  color: $color-error;
+  content: ' *';
+}
+
+// Select wrapper
+.form-select {
+  position: relative;
+  border-radius: 3px;
+}
+
+.form-select > select {
+  width: 100%;
+}
+
+.form-select::after {
+  position: absolute;
+  top: 14px;
+  right: 12px;
+  border: solid 6px transparent;
+  border-top-width: 8px;
+  border-top-color: $color-gray-1;
+  content: '';
+}
+
+/*.form-input*/
+
+.form-input-group {
+  display: flex;
+}
+
+.form-input--error {
+  box-shadow: 0 0 0 2px $color-error;
+}
+
+.form-input--value {
+  margin-right: .5rem;
+  width: 70%;
+}
+
+.form-input--unit {
+  width: 30%;
+}
+
+.form-input--ingredient-value {
+  margin-right: .5rem;
+  min-width: 120px;
+}
+
+.form-input--ingredient-name {
+  width: 100%;
+}
+
+.form-radio {
+  display: inline-block;
+  padding: .5rem 1rem .5rem 0;
+
+  > input {
+    margin-right: .5rem;
+  }
+}
+
+.form-error {
+  display: block;
+  margin-top: .5rem;
+  margin-bottom: 0;
+  color: $color-error;
+  font-size: .75rem;
+}

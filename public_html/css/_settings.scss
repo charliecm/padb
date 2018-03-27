@@ -1,0 +1,69 @@
+/**
+ * Settings
+ */
+
+// Base -----------------------------------------------------------------------
+
+// Fonts
+$font-primary: Arial, sans-serif;
+
+// Typographic scale
+$type-factor: 1.3333; // 4/3
+$type-base: 18px;
+$type-scale-0: ceil($type-base / $type-factor);
+$type-scale-1: $type-base;
+$type-scale-2: ceil($type-base * $type-factor);
+$type-scale-3: ceil($type-base * pow($type-factor, 2));
+$type-scale-4: ceil($type-base * pow($type-factor, 3));
+$type-scale-5: ceil($type-base * pow($type-factor, 4));
+$type-leading: 1.6666;
+$drop-margin: $type-base * 1.6666;
+
+// Color palette
+$color-white: #fff;
+$color-black: #000;
+$color-gray-1: #666;
+$color-gray-2: #999;
+$color-gray-3: #ccc;
+$color-gray-4: #eee;
+$color-gray-5: #f9f9f9;
+$color-bootstrap-blue: #0275d8;
+$color-bootstrap-blue-light: #025aa5;
+
+// Color scheme
+$color-bg: $color-white;
+$color-text: $color-black;
+$color-anchor: $color-bootstrap-blue;
+$color-anchor-hover: $color-bootstrap-blue-light;
+$color-success: #0a0;
+$color-error: #e30006;
+$color-error-hover: #eb4643;
+$color-focus: #8fcbff;
+
+// Layout ---------------------------------------------------------------------
+
+// Breakpoints
+$bp-phone-portrait: 320px;
+$bp-phone-landscape: 480px;
+$bp-phablet: 640px;
+$bp-tablet: 768px;
+$bp-desktop: 1024px;
+
+$bp-sm: em($bp-phone-landscape);
+$bp-md: em($bp-phablet);
+$bp-lg: em($bp-tablet);
+
+// Grid
+$grid-columns: 12;
+$grid-gutter: 18px;
+$grid-breakpoints: (
+  'sm': $bp-sm,
+  'md': $bp-md,
+  'lg': $bp-lg
+);
+
+// Layout
+$l-wrap-padding: 16px;
+$l-wrap-lg: 942px;
+$l-wrap-md: 622px;
+$l-wrap-sm: 462px;

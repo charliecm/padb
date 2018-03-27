@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "author": "Charlie Chao",
   "scripts": {
-    "watch": "node-sass -w -r --output-style compact -o public_html/css public_html/css & livereload public_html/"
+    "watch": "node-sass -w -r --output-style compressed -o public_html/css public_html/css & livereload public_html/"
   },
   "devDependencies": {
     "livereload": "^0.7.0",

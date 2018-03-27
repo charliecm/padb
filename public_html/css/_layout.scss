@@ -1,0 +1,32 @@
+/**
+ * Layout
+ */
+
+// Flexbox sticky footer
+// https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/
+.l-wrap-all {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.l-wrap-content {
+  flex: 1;
+}
+
+.l-wrap {
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $l-wrap-padding;
+  padding-left: $l-wrap-padding;
+  max-width: rem($l-wrap-lg + $l-wrap-padding * 2);
+}
+
+.l-wrap--md {
+  max-width: rem($l-wrap-md + $l-wrap-padding * 2);
+}
+
+.l-wrap--sm {
+  max-width: rem($l-wrap-sm + $l-wrap-padding * 2);
+}
