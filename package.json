@@ -1,0 +1,12 @@
+{
+  "name": "padb",
+  "version": "1.0.0",
+  "author": "Charlie Chao",
+  "scripts": {
+    "watch": "node-sass -w -r --output-style compact -o public_html/css public_html/css & livereload public_html/"
+  },
+  "devDependencies": {
+    "livereload": "^0.7.0",
+    "node-sass": "^4.8.3"
+  }
+}
