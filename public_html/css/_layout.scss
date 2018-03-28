@@ -30,3 +30,8 @@
 .l-wrap--sm {
   max-width: rem($l-wrap-sm + $l-wrap-padding * 2);
 }
+
+.l-section {
+  padding-top: rem($drop-margin * 2);
+  padding-bottom: rem($drop-margin * 2);
+}

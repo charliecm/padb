@@ -20,6 +20,14 @@
   text-align: center;
 }
 
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
 .text-success {
   color: $color-success;
 }
@@ -49,4 +57,12 @@
   overflow: hidden;
   direction: ltr;
   clip: rect(0 0 0 0);
+}
+
+.a-inherit {
+  color: inherit;
+}
+
+.a-lite {
+  color: $color-gray-1;
 }

@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  margin: 0 0 6rem;
+  margin: 0;
   background-color: $color-bg;
   height: 100%;
   overflow-x: hidden;
@@ -34,28 +34,36 @@ img {
 }
 
 // Apply base typography + drop margin
-p, h1, h2, h3, blockquote, ul, ol {
+.drop, p, h1, h2, h3, blockquote, ul, ol {
   margin-top: 0;
   margin-bottom: rem($drop-margin);
   line-height: $type-leading;
   font-size: rem($type-base);
 }
 
-h1 {
-  // font-family: $font-secondary;
+h1, .h1 {
+  line-height: 1.3125;
   font-size: rem($type-scale-3);
 }
 
-h2 {
-  // font-family: $font-secondary;
+h2, .h2 {
+  line-height: 1.25;
   font-size: rem($type-scale-2);
 }
 
-h3 {
-  // font-family: $font-secondary;
+h3, .h3 {
   font-size: rem($type-scale-1);
 }
 
 small {
   font-size: rem($type-scale-0);
+}
+
+a {
+  text-decoration: none;
+  color: $color-anchor;
+
+  &:hover {
+    color: $color-anchor-hover;
+  }
 }

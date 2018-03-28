@@ -75,24 +75,6 @@ input:not([type='submit']):not([type='radio']), textarea, select {
   box-shadow: 0 0 0 2px $color-error;
 }
 
-.form-input--value {
-  margin-right: .5rem;
-  width: 70%;
-}
-
-.form-input--unit {
-  width: 30%;
-}
-
-.form-input--ingredient-value {
-  margin-right: .5rem;
-  min-width: 120px;
-}
-
-.form-input--ingredient-name {
-  width: 100%;
-}
-
 .form-radio {
   display: inline-block;
   padding: .5rem 1rem .5rem 0;
@@ -108,4 +90,18 @@ input:not([type='submit']):not([type='radio']), textarea, select {
   margin-bottom: 0;
   color: $color-error;
   font-size: .75rem;
+}
+
+
+.form-search {
+  display: flex;
+}
+
+.form-search__input {
+  margin-right: rem($grid-gutter / 2);
+  width: 100%;
+}
+
+.form-search__submit {
+
 }
