@@ -55,17 +55,6 @@ function ensure_https() {
 }
 
 /**
- * Shows a notice if a server-defined message exists.
- */
-function show_notice() {
-	start_session();
-	if (isset($_SESSION['message'])) {
-		echo '<p class="notice">' . $_SESSION['message'] . '</p>';
-		unset($_SESSION['message']);
-	}
-}
-
-/**
  * Outputs an input value for prefill.
  * @param string $name Input name.
  * @param string $type Input type.
@@ -126,5 +115,18 @@ function form_highlight_error($inputs, $name) {
 		echo ' form-input--error';
 	}
 }
+
+function get_artist_name($fname, $lname) {
+  $output = $fname;
+  if (!empty($lname)) {
+    $output .= ' ' . $lname;
+  }
+  return $output;
+}
+
+function get_artwork_title($name) {
+  return utf8_encode($name);
+}
+
 
 ?>
