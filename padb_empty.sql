@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 26, 2018 at 09:28 PM
+-- Generation Time: Mar 27, 2018 at 10:45 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -65,6 +65,7 @@ DROP TABLE IF EXISTS `artworks`;
 CREATE TABLE `artworks` (
   `artworkID` int(11) NOT NULL,
   `title` text NOT NULL,
+  `status` enum('In Place','Removed','','') NOT NULL,
   `yearInstalled` date NOT NULL,
   `siteName` text,
   `siteAddress` text,
@@ -75,7 +76,6 @@ CREATE TABLE `artworks` (
   `material` text,
   `photoURL` text,
   `websiteURL` text,
-  `statusID` int(11) NOT NULL,
   `neighborhoodID` int(11) NOT NULL,
   `ownerID` int(11) NOT NULL,
   `typeID` int(11) NOT NULL
@@ -146,18 +146,6 @@ CREATE TABLE `neighborhoods` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `statuses`
---
-
-DROP TABLE IF EXISTS `statuses`;
-CREATE TABLE `statuses` (
-  `statusID` int(11) NOT NULL,
-  `status` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `toSee`
 --
 
@@ -202,7 +190,6 @@ ALTER TABLE `artists`
 --
 ALTER TABLE `artworks`
   ADD PRIMARY KEY (`artworkID`),
-  ADD KEY `artworks_status` (`statusID`),
   ADD KEY `artworks_neighborhood` (`neighborhoodID`),
   ADD KEY `artworks_type` (`typeID`),
   ADD KEY `artworks_owner` (`ownerID`);
@@ -241,13 +228,6 @@ ALTER TABLE `members`
 ALTER TABLE `neighborhoods`
   ADD PRIMARY KEY (`neighborhoodID`),
   ADD UNIQUE KEY `name` (`name`);
-
---
--- Indexes for table `statuses`
---
-ALTER TABLE `statuses`
-  ADD PRIMARY KEY (`statusID`),
-  ADD UNIQUE KEY `status` (`status`);
 
 --
 -- Indexes for table `toSee`
@@ -298,12 +278,6 @@ ALTER TABLE `neighborhoods`
   MODIFY `neighborhoodID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `statuses`
---
-ALTER TABLE `statuses`
-  MODIFY `statusID` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `types`
 --
 ALTER TABLE `types`
@@ -312,6 +286,13 @@ ALTER TABLE `types`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `artistArtworks`
+--
+ALTER TABLE `artistArtworks`
+  ADD CONSTRAINT `artistArtworks_artist` FOREIGN KEY (`artistID`) REFERENCES `artists` (`artistID`),
+  ADD CONSTRAINT `artistArtworks_artwork` FOREIGN KEY (`artworkID`) REFERENCES `artworks` (`artworkID`);
 
 --
 -- Constraints for table `artists`
@@ -325,8 +306,28 @@ ALTER TABLE `artists`
 ALTER TABLE `artworks`
   ADD CONSTRAINT `artworks_neighborhood` FOREIGN KEY (`neighborhoodID`) REFERENCES `neighborhoods` (`neighborhoodID`),
   ADD CONSTRAINT `artworks_owner` FOREIGN KEY (`ownerID`) REFERENCES `owners` (`ownerID`),
-  ADD CONSTRAINT `artworks_status` FOREIGN KEY (`statusID`) REFERENCES `statuses` (`statusID`),
   ADD CONSTRAINT `artworks_type` FOREIGN KEY (`typeID`) REFERENCES `types` (`typeID`);
+
+--
+-- Constraints for table `favoriteArtists`
+--
+ALTER TABLE `favoriteArtists`
+  ADD CONSTRAINT `favoriteArtists_artist` FOREIGN KEY (`artistID`) REFERENCES `artists` (`artistID`),
+  ADD CONSTRAINT `favoriteArtists_member` FOREIGN KEY (`memberID`) REFERENCES `members` (`memberID`);
+
+--
+-- Constraints for table `haveSeen`
+--
+ALTER TABLE `haveSeen`
+  ADD CONSTRAINT `haveSeen_artwork` FOREIGN KEY (`artworkID`) REFERENCES `artworks` (`artworkID`),
+  ADD CONSTRAINT `haveSeen_member` FOREIGN KEY (`memberID`) REFERENCES `members` (`memberID`);
+
+--
+-- Constraints for table `toSee`
+--
+ALTER TABLE `toSee`
+  ADD CONSTRAINT `toSee_artwork` FOREIGN KEY (`artworkID`) REFERENCES `artworks` (`artworkID`),
+  ADD CONSTRAINT `toSee_member` FOREIGN KEY (`memberID`) REFERENCES `members` (`memberID`);
 SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
 

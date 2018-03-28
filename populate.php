@@ -97,7 +97,6 @@ function parseArtists() {
  */
 function parseArtworks() {
 	global $db, $artist_ids;
-	$status_ids = array();
 	$neighborhood_ids = array();
 	$owner_ids = array();
 	$type_ids = array();
@@ -117,7 +116,7 @@ function parseArtworks() {
 		$id = 0;
 		$title = empty($row[1]) ? NULL : $row[1];
 		$yearInstalled = empty($row[2]) ? NULL : ($row[2] . '-01-01');
-		$status = empty($row[3]) ? 'Removed' : $row[3];
+		$status = ($row[3] === 'In place') ? 'In Place' : 'Removed';
 		$description = empty($row[4]) ? NULL : $row[4];
 		$statement = empty($row[5]) ? NULL : $row[5];
 		$siteName = empty($row[6]) ? NULL : $row[6];
@@ -132,7 +131,6 @@ function parseArtworks() {
 		$photoURL = empty($row[16]) ? NULL : $row[16];
 		$artists = empty($row[18]) ? NULL : explode(';', $row[18]);
 		$has_invalid_artist = FALSE;
-		$statusID = NULL;
 		$neighborhoodID = NULL;
 		$ownershipID = NULL;
 		$typeID = NULL;
@@ -166,29 +164,6 @@ function parseArtworks() {
 				echo "<p><strong>Artwork has invalid artists.</strong><br><span>$csv</span></p>";
 				continue;
 			}
-		}
-
-		// Check status
-		$index = array_search($status, $status_ids);
-		if (array_key_exists($status, $status_ids)) {
-			// Set statusID
-			$statusID = $status_ids[$status];
-		} else {
-			// Insert new status
-			$query = "INSERT INTO statuses SET status = ?";
-			if (!$stmt = $db->prepare($query)) echo "<p><strong>Statement failed:</strong> $db->error</p>";
-			$stmt->bind_param('s', $status);
-			$stmt->execute();
-			if ($stmt->affected_rows <= 0) {
-				$error = $stmt->error;
-				echo "<p><strong>Failed to add status '$status'</strong>: $error</p>";
-			} else {
-				// Set statusID to newly created status instance
-				$statusID = $db->insert_id;
-				$status_ids[$status] = $statusID;
-				echo "<p>Added status '$status'.</p>";
-			}
-			$stmt->free_result();
 		}
 
 		// Check neighborhood
@@ -265,9 +240,9 @@ function parseArtworks() {
 		}
 
 		// Insert new artwork
-		$query = "INSERT INTO artworks (title, yearInstalled, siteName, siteAddress, description, statement, latitude, longitude, material, photoURL, websiteURL, statusID, neighborhoodID, ownerID, typeID) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		$query = "INSERT INTO artworks (title, status, yearInstalled, siteName, siteAddress, description, statement, latitude, longitude, material, photoURL, websiteURL, neighborhoodID, ownerID, typeID) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		if (!$stmt = $db->prepare($query)) echo "<p><strong>Statement failed:</strong> $db->error</p>";
-		$stmt->bind_param('ssssssddsssiiii', $title, $yearInstalled, $siteName, $siteAddress, $description, $statement, $latitude, $longitude, $material, $photoURL, $websiteURL, $statusID, $neighborhoodID, $ownerID, $typeID);
+		$stmt->bind_param('sssssssddsssiii', $title, $status, $yearInstalled, $siteName, $siteAddress, $description, $statement, $latitude, $longitude, $material, $photoURL, $websiteURL, $neighborhoodID, $ownerID, $typeID);
 		$stmt->execute();
 		if ($stmt->affected_rows <= 0) {
 			$error = $stmt->error;
