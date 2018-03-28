@@ -17,13 +17,14 @@ function flag_active($name) {
 ?>
 <header class="header">
   <div class="header-wrap l-wrap">
-    <h1 class="header-title">
-      <a href="index.php">
-        PADb
-      </a>
-    </h1>
+    <a href="index.php" class="header-title">
+      PADb
+    </a>
     <nav class="header-nav">
       <ul>
+        <li>
+          <a href="index.php"<?php flag_active('home'); ?>>Home</a>
+        </li>
         <li>
           <a href="artworks.php"<?php flag_active('artworks'); ?>>Artworks</a>
         </li>
@@ -39,9 +40,6 @@ function flag_active($name) {
           <a href="logout.php">Logout</a>
         </li>
         <?php else: ?>
-        <li>
-          <a href="login.php"<?php flag_active('login'); ?>>Login</a>
-        </li>
         <li>
           <a href="register.php"<?php flag_active('register'); ?>>Register</a>
         </li>
