@@ -121,7 +121,7 @@ function get_artist_name($fname, $lname) {
   if (!empty($lname)) {
     $output .= ' ' . $lname;
   }
-  return $output;
+  return utf8_encode($output);
 }
 
 function get_artwork_title($name) {
