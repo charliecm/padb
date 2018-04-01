@@ -5,7 +5,7 @@
 
 require('../private/functions.php');
 
-$page = 'home';
+$page_title = 'home';
 $db = db_connect();
 
 require('../private/header.php');
@@ -26,18 +26,18 @@ require('../private/header.php');
       <?php
         $res1 = $db->query("SELECT artworkID, title, yearInstalled, photoURL FROM artworks WHERE status = 'In Place' ORDER BY yearInstalled DESC LIMIT 10");
         while ($artwork = $res1->fetch_assoc()):
-          $artworkID = $artwork['artworkID'];
-          $artworkURL = 'artwork.php?id=' . $artwork['artworkID'];
-          $title = htmlspecialchars(get_artwork_title($artwork['title']));
-          $yearInstalled = date('Y', strtotime($artwork['yearInstalled']));
+          $artwork_id = $artwork['artworkID'];
+          $url = 'artwork.php?id=' . $artwork['artworkID'];
+          $title = htmlspecialchars(get_sanitized_text($artwork['title']));
+          $year_installed = date('Y', strtotime($artwork['yearInstalled']));
           $photoURL = 'images/empty.png'; // TODO: $artwork['photoURL'];
-          $res2 = $db->query("SELECT A.artistID, A.firstName, A.lastName FROM artists A, artistArtworks AA WHERE A.artistID = AA.artistID AND AA.artworkID = $artworkID");
+          $res2 = $db->query("SELECT A.artistID, A.firstName, A.lastName FROM artists A, artistArtworks AA WHERE A.artistID = AA.artistID AND AA.artworkID = $artwork_id");
           $count = 0;
       ?>
       <li class="list__item">
-        <a href="<?php echo $artworkURL; ?>" class="list__thumbnail" style="background-image:url('<?php echo $photoURL; ?>')"></a>
+        <a href="<?php echo $url; ?>" class="list__thumbnail" style="background-image:url('<?php echo $photoURL; ?>')"></a>
         <div class="list__text">
-          <a href="<?php echo $artworkURL; ?>" class="a-inherit">
+          <a href="<?php echo $url; ?>" class="a-inherit">
             <strong><?php echo $title; ?></strong>
           </a><br>
           <small>
@@ -47,7 +47,7 @@ require('../private/header.php');
                 $artistID = $artist['artistID'];
                 $name = get_artist_name($artist['firstName'], $artist['lastName']);
             ?><?php if ($count++) echo ', '; ?><a href="artist.php?id=<?php echo $artistID; ?>" class="a-lite"><?php echo $name ?></a><?php endwhile; ?>
-            in <?php echo $yearInstalled; ?>
+            in <?php echo $year_installed; ?>
           </small>
         </div>
       </li>

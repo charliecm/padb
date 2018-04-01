@@ -7,7 +7,7 @@ input:focus, textarea:focus, select:focus {
   box-shadow: 0 0 0 3px $color-focus;
 }
 
-input:not([type='submit']):not([type='radio']), textarea, select {
+input:not([type='submit']):not([type='reset']):not([type='radio']), textarea, select {
   display: block;
   position: relative;
   border: solid 1px $color-gray-3;
@@ -92,16 +92,10 @@ input:not([type='submit']):not([type='radio']), textarea, select {
   font-size: .75rem;
 }
 
-
-.form-search {
+.form-inline {
   display: flex;
 }
 
-.form-search__input {
-  margin-right: rem($grid-gutter / 2);
-  width: 100%;
-}
-
-.form-search__submit {
-
+.form-inline__input {
+  margin-right: rem($grid-gutter);
 }

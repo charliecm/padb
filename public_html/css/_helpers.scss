@@ -16,6 +16,19 @@
   width: 100%;
 }
 
+.drop {
+  margin-bottom: rem($drop-margin);
+}
+
+.drop-sm {
+  margin-bottom: rem($drop-margin / 2);
+}
+
+.split {
+  display: flex;
+  justify-content: space-between;
+}
+
 .text-center {
   text-align: center;
 }
@@ -65,4 +78,29 @@
 
 .a-lite {
   color: $color-gray-1;
+}
+
+// Sort link
+.a-sort {
+  margin-left: .5rem;
+
+  &.-active {
+    color: $color-black;
+    font-weight: bold;
+
+    &::after {
+      display: inline-block;
+      position: relative;
+      top: rem(-1px);
+      margin-left: rem(4px);
+      border: rem(5px) solid transparent;
+      border-bottom: rem(8px) solid $color-black;
+      content: '';
+    }
+  }
+
+  &.-alt::after {
+    border-top: rem(8px) solid $color-black;
+    border-bottom: 0;
+  }
 }

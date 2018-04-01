@@ -1,0 +1,16 @@
+/**
+ * Pagination
+ */
+
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  list-style: none;
+
+  li {
+    margin-right: .25rem;
+    margin-bottom: .5rem;
+  }
+}

@@ -10,8 +10,8 @@ require_once('../private/functions.php');
  * @param string $name Page name.
  */
 function flag_active($name) {
-  global $page;
-  if (isset($page) && $page === $name)
+  global $page_id;
+  if (isset($page_id) && $page_id === $name)
     echo ' class="-active"';
 }
 ?>

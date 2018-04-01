@@ -5,23 +5,41 @@
 .btn {
   display: inline-block;
   position: relative;
-  border: 0;
+  border: 1px solid $color-gray-4;
   border-radius: 3px;
-  background-color: $color-black;
+  background-color: $color-white;
   cursor: pointer;
-  padding: rem(10px) 2rem rem(9px);
-  color: $color-white;
+  padding: rem(9px) 2rem rem(8px);
+  color: $color-gray-2;
   -webkit-appearance: none;
 
-  &:hover, &:active, &:focus {
-    background-color: $color-gray-1;
-    text-decoration: none;
-    color: $color-white;
+  &:hover {
+    color: $color-gray-2;
   }
 
-  &:active {
-    top: 2px;
+  &[disabled] {
+    opacity: .5;
+    cursor: default;
   }
+
+  &:not([disabled]) {
+    &:hover, &:active, &:focus, &.-active {
+      border-color: transparent;
+      background-color: $color-gray-1;
+      text-decoration: none;
+      color: $color-white;
+    }
+
+    &:active {
+      top: 2px;
+    }
+  }
+}
+
+.btn--primary {
+  border-color: transparent;
+  background-color: $color-black;
+  color: $color-white;
 }
 
 .btn--destructive {
@@ -33,5 +51,5 @@
 }
 
 .btn--small {
-  padding: .25rem .5rem;
+  padding: .25rem 1rem;
 }

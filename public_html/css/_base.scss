@@ -34,7 +34,7 @@ img {
 }
 
 // Apply base typography + drop margin
-.drop, p, h1, h2, h3, blockquote, ul, ol {
+p, h1, h2, h3, blockquote, ul, ol {
   margin-top: 0;
   margin-bottom: rem($drop-margin);
   line-height: $type-leading;

@@ -8,31 +8,31 @@
  * @return mysqli
  */
 function db_connect() {
-	require('db-config.php');
-	$db = @mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-	if ($errno = $db->connect_errno) {
-		die("<p>There was a problem connecting to the database: $errno</p>");
-	}
-	return $db ?? null;
+  require('db-config.php');
+  $db = @mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+  if ($errno = $db->connect_errno) {
+    die("<p>There was a problem connecting to the database: $errno</p>");
+  }
+  return $db ?? null;
 }
 
 /**
  * Checks and starts a session.
  */
 function start_session() {
-	if (session_status() == PHP_SESSION_NONE) session_start();
+  if (session_status() == PHP_SESSION_NONE) session_start();
 }
 
 /**
  * Checks if user is logged in, otherwise redirect to login page.
  */
 function check_login() {
-	start_session();
-	if (!isset($_SESSION['user_id'])) {
-		$_SESSION['redirect'] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-		header("Location: login.php");
-		exit;
-	}
+  start_session();
+  if (!isset($_SESSION['user_id'])) {
+    $_SESSION['redirect'] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    header("Location: login.php");
+    exit;
+  }
 }
 
 /**
@@ -40,18 +40,18 @@ function check_login() {
  * @return boolean True if user is logged in.
  */
 function is_logged_in() {
-	start_session();
-	return isset($_SESSION['user_id']);
+  start_session();
+  return isset($_SESSION['user_id']);
 }
 
 /**
  * Redirects to HTTPS if URL not secured.
  */
 function ensure_https() {
-	if ($_SERVER['HTTPS'] !== 'on') {
-		header('Location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
-		exit;
-	}
+  if ($_SERVER['HTTPS'] !== 'on') {
+    header('Location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+    exit;
+  }
 }
 
 /**
@@ -61,31 +61,31 @@ function ensure_https() {
  * @param string $select Select option value for 'select' and 'radio' input types.
  */
 function form_fill_input($inputs, $name, $type, $select = null) {
-	if ($inputs !== null && isset($inputs[$name]['value'])) {
-		$value = $inputs[$name]['value'];
-		switch($type) {
-			case 'text':
-				// Output value attribute in <input>
-				echo sprintf(' value="%s"', htmlspecialchars($value));
-				break;
-			case 'textarea':
-				// Output raw value
-				echo htmlspecialchars($value);
-				break;
-			case 'select':
-				// Output 'selected' attribute in <option>
-				if (isset($select) && (string)$value === (string)$select) {
-					echo ' selected';
-				}
-				break;
-			case 'radio':
-				// Output 'checked' attribute in radio <input>
-				if (isset($select) && (string)$value === (string)$select) {
-					echo ' checked';
-				}
-				break;
-		}
-	}
+  if ($inputs !== null && isset($inputs[$name]['value'])) {
+    $value = $inputs[$name]['value'];
+    switch($type) {
+      case 'text':
+        // Output value attribute in <input>
+        echo sprintf(' value="%s"', htmlspecialchars($value));
+        break;
+      case 'textarea':
+        // Output raw value
+        echo htmlspecialchars($value);
+        break;
+      case 'select':
+        // Output 'selected' attribute in <option>
+        if (isset($select) && (string)$value === (string)$select) {
+          echo ' selected';
+        }
+        break;
+      case 'radio':
+        // Output 'checked' attribute in radio <input>
+        if (isset($select) && (string)$value === (string)$select) {
+          echo ' checked';
+        }
+        break;
+    }
+  }
 }
 
 /**
@@ -93,17 +93,17 @@ function form_fill_input($inputs, $name, $type, $select = null) {
  * @param string $names Input name(s) to display error message(s) for.
  */
 function form_display_error($inputs, ...$names) {
-	if ($inputs === null) return;
-	$count = 0;
-	foreach ($names as $name) {
-		if (isset($inputs[$name]['error'])) {
-			if ($count === 0) echo '<p class="form-error">';
-			if ($count > 0) echo ' '; // Add space between multiple error messages
-			echo htmlspecialchars($inputs[$name]['error']);
-			$count++;
-		}
-	}
-	if ($count > 0) echo '</p>';
+  if ($inputs === null) return;
+  $count = 0;
+  foreach ($names as $name) {
+    if (isset($inputs[$name]['error'])) {
+      if ($count === 0) echo '<p class="form-error">';
+      if ($count > 0) echo ' '; // Add space between multiple error messages
+      echo htmlspecialchars($inputs[$name]['error']);
+      $count++;
+    }
+  }
+  if ($count > 0) echo '</p>';
 }
 
 /**
@@ -111,22 +111,66 @@ function form_display_error($inputs, ...$names) {
  * @param string $name Input name to check error for.
  */
 function form_highlight_error($inputs, $name) {
-	if ($inputs !== null && isset($inputs[$name]['error'])) {
-		echo ' form-input--error';
-	}
+  if ($inputs !== null && isset($inputs[$name]['error'])) {
+    echo ' form-input--error';
+  }
 }
 
+/**
+ * Returns URL parameters based on key-value pairs.
+ * @param array $params Parameters array.
+ * @return string URL parameters.
+ */
+function get_url_params($params) {
+  $url = '?';
+  $count = 0;
+  foreach ($params as $key=>$value) {
+    if ($count++ > 0) $url .= '&';
+    $url .= "$key=" . urlencode($value);
+  }
+  return $url;
+}
+
+/**
+ * Returns sanitized text with proper encoding.
+ * @param string $text Text to sanitize.
+ * @return string Sanitized text.
+ */
+function get_sanitized_text($text) {
+  return htmlspecialchars(utf8_encode($text));
+}
+
+/**
+ * Returns full artist name.
+ * @param string $fname First name.
+ * @param string $lname Last name.
+ * @return string Full artist name.
+ */
 function get_artist_name($fname, $lname) {
   $output = $fname;
   if (!empty($lname)) {
     $output .= ' ' . $lname;
   }
-  return utf8_encode($output);
+  return get_sanitized_text($output);
 }
 
-function get_artwork_title($name) {
-  return utf8_encode($name);
+/**
+ * Returns artwork type as a plural.
+ * @param string $type Type value.
+ * @return string Artwork type as plural.
+ */
+function get_artwork_type_plural($type) {
+  $type = strtolower($type);
+  switch ($type) {
+    case 'banners':
+      break;
+    default:
+      $type .= 's';
+      break;
+  }
+  return $type;
 }
 
-
+// Include other functions
+require_once('functions.pagination.php');
 ?>
