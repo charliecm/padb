@@ -13,15 +13,14 @@ $db = db_connect();
 // Get parameters
 $search_query = $_GET['query'] ?? NULL;
 $search_neighborhood_id = isset($_GET['neighborhood']) ? intval($_GET['neighborhood']) : NULL;
-$search_owner_id = isset($_GET['owner']) ? intval($_GET['owner']) : NULL;
-$search_type_id = isset($_GET['type']) ? intval($_GET['type']) : NULL;
 $search_neighborhood_name = '';
+$search_owner_id = isset($_GET['owner']) ? intval($_GET['owner']) : NULL;
 $search_owner_name = '';
+$search_type_id = isset($_GET['type']) ? intval($_GET['type']) : NULL;
 $search_type_name = '';
 $sort = (isset($_GET['sort']) && $_GET['sort'] === 'year') ? 'year' : 'title';
 $sort_order = (isset($_GET['sort_order']) && $_GET['sort_order'] === 'desc') ? 'desc' : 'asc';
 $page = max(isset($_GET['page']) ? intval($_GET['page']) : 1, 1);
-
 
 require('../private/header.php');
 ?>

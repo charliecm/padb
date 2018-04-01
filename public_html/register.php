@@ -119,7 +119,6 @@ require('../private/header.php');
 	<p>
 		Already registered? <a href="login.php">Login</a>.
 	</p>
-	<?php endif; ?>
 </section>
 
 <?php require('../private/footer.php'); ?>

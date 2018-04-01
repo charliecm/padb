@@ -54,7 +54,7 @@ require('../private/header.php');
       <?php endwhile; ?>
   </ul>
   <p>
-    <a href="artworks.php" class="btn">View All</a>
+    <a href="artworks.php" class="btn btn--primary">View All</a>
   </p>
 </section>
 
