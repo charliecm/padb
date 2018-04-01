@@ -6,7 +6,7 @@
 require('../private/functions.php');
 
 $page_id = 'artists';
-$page_title = 'Artists';
+$page_title = 'Artists' . get_site_title_suffix();
 $limit = 10;
 $db = db_connect();
 

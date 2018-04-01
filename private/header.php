@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title><?php echo $page_title ?? 'Home'; ?></title>
+  <title><?php echo $page_title ?? 'PADb — Public Art Database'; ?></title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="css/styles.css">
 </head>

@@ -7,7 +7,7 @@ require('../private/functions.php');
 
 ensure_https();
 
-$title = 'Login';
+$page_title = 'Login' . get_site_title_suffix();
 $inputs = null;
 $login_failed = false;
 

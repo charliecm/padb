@@ -4,6 +4,14 @@
  */
 
 /**
+ * Returns the site title suffix.
+ * @return string Suffix.
+ */
+function get_site_title_suffix() {
+  return ' / PADb';
+}
+
+/**
  * Attempts connection to database.
  * @return mysqli
  */
