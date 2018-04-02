@@ -51,13 +51,13 @@ require('../private/header.php');
   </form>
   <?php
     // Prepare query
-    $query = " FROM artists";
+    $query = " FROM artists A INNER JOIN countries C ON C.countryID = A.countryID";
     $types = '';
     $params = [];
     $filter_desc = '';
     if ($search_country_id) {
       // Filter by country
-      $query .= " WHERE countryID = ?";
+      $query .= " WHERE A.countryID = ?";
       $types .= 'i';
       $params[] = &$search_country_id;
       $filter_desc = " from $search_country_name";
@@ -65,7 +65,7 @@ require('../private/header.php');
     if ($search_query) {
       // Search by name
       $query .= (empty($types)) ? ' WHERE ' : ' AND ';
-      $query .= " (firstName LIKE ? OR lastName LIKE ?)";
+      $query .= " (A.firstName LIKE ? OR A.lastName LIKE ?)";
       $types .= 'ss';
       $match = '%' . $search_query . '%';
       $params[] = &$match;
@@ -73,7 +73,7 @@ require('../private/header.php');
       $filter_desc = " with names containing '" . get_sanitized_text($search_query) . "'";
     }
     array_unshift($params, $types);
-    $order_by = 'firstName, lastName ' . (($sort_order === 'asc') ? 'ASC' : 'DESC');
+    $order_by = 'A.firstName, A.lastName ' . (($sort_order === 'asc') ? 'ASC' : 'DESC');
 
     // Get total rows and pages
     $stmt = $db->prepare("SELECT COUNT(*) $query");
@@ -91,7 +91,14 @@ require('../private/header.php');
     else:
     // Populate results
     $offset = $limit * ($page - 1);
-    $stmt = $db->prepare("SELECT artistID, firstName, lastName, photoURL, countryID $query ORDER BY $order_by LIMIT $limit OFFSET $offset");
+    $stmt = $db->prepare("SELECT A.artistID, A.firstName, A.lastName, A.photoURL,
+      C.name AS country,
+      (SELECT COUNT(*)
+        FROM artistArtworks
+        WHERE artistID = A.artistID) AS artworks
+      $query
+      ORDER BY $order_by
+      LIMIT $limit OFFSET $offset");
     if (!empty($types)) call_user_func_array([ $stmt, 'bind_param' ], $params);
     $stmt->execute();
     $res1 = $stmt->get_result();
@@ -116,22 +123,11 @@ require('../private/header.php');
       while ($artist = $res1->fetch_assoc()):
         // Get artist info
         $artist_id = $artist['artistID'];
+        $name = get_artist_name($artist['firstName'], $artist['lastName']);
         $artist_url = "artist.php?id=$artist_id";
         $photo_url = 'images/empty.php'; // TODO: $artist['photoURL'] ?? 'images/empty.png';
-        $country_id = $artist['countryID'] ?? FALSE;
-        $country = NULL;
-        $name = get_artist_name($artist['firstName'], $artist['lastName']);
-        // Get number of artworks
-        $res2 = $db->query("SELECT COUNT(*) FROM artistArtworks WHERE artistID = $artist_id");
-        $artworks = $res2->num_rows;
-        if ($country_id) {
-          // Get country name
-          $res2 = $db->query("SELECT name FROM countries WHERE countryID = $country_id LIMIT 1");
-          if ($res2->num_rows) {
-            $countryName = get_sanitized_text($res2->fetch_assoc()['name']);
-          }
-        }
-        $res2->free();
+        $country = get_sanitized_text($artist['country']);
+        $artworks = $artist['artworks'];
     ?>
     <li class="list__item">
       <a href="<?php echo $artist_url; ?>" class="list__thumbnail list__thumbnail--person" style="background-image:url('<?php echo $photo_url; ?>')"></a>
@@ -140,7 +136,7 @@ require('../private/header.php');
           <strong><?php echo $name; ?></strong>
         </a><br>
         <small>
-          <?php if (!empty($countryName)) echo 'From ' . $countryName . '.'; ?>
+          <?php if (!empty($country)) echo 'From ' . $country . '.'; ?>
           Has <?php echo $artworks; ?> artwork<?php if ($artworks > 1) echo 's'; ?>.
         </small>
       </div>

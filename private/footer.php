@@ -2,7 +2,9 @@
     </div>
 
     <footer class="footer">
-      &copy; PADb
+      <p class="no-drop">
+        &copy; PADb
+      </p>
     </footer>
   </main>
 

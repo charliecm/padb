@@ -154,7 +154,11 @@ require('../private/header.php');
     else:
     // Populate results
     $offset = $limit * ($page - 1);
-    $stmt = $db->prepare("SELECT artworkID, title, status, yearInstalled, siteAddress, latitude, longitude, photoURL, neighborhoodID, ownerID, typeID $query ORDER BY $order_by LIMIT $limit OFFSET $offset");
+    $stmt = $db->prepare("SELECT artworkID, title, status, yearInstalled, siteAddress, latitude, longitude, photoURL, neighborhoodID, ownerID, typeID
+      $query
+      ORDER BY $order_by
+      LIMIT $limit
+      OFFSET $offset");
     if (!empty($types)) call_user_func_array([ $stmt, 'bind_param' ], $params);
     $stmt->execute();
     $res1 = $stmt->get_result();
@@ -190,7 +194,9 @@ require('../private/header.php');
         $title = htmlspecialchars(get_sanitized_text($artwork['title']));
         $year_installed = date('Y', strtotime($artwork['yearInstalled']));
         $photo_url = 'images/empty.png'; // TODO: $artwork['photoURL'];
-        $res2 = $db->query("SELECT A.artistID, A.firstName, A.lastName FROM artists A, artistArtworks AA WHERE A.artistID = AA.artistID AND AA.artworkID = $artwork_id");
+        $res2 = $db->query("SELECT A.artistID, A.firstName, A.lastName
+          FROM artists A, artistArtworks AA
+          WHERE A.artistID = AA.artistID AND AA.artworkID = $artwork_id");
         $count = 0;
     ?>
     <li class="list__item">

@@ -1,0 +1,24 @@
+/**
+ * Listing Page
+ */
+
+.listing__photo {
+  background-color: $color-gray-4;
+  padding: .25rem;
+  text-align: center;
+}
+
+.listing__map {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: rem($drop-margin / 2);
+  background-color: $color-gray-4;
+  color: $color-gray-1;
+
+  &::after {
+    display: block;
+    padding-top: 75%;
+    content: '';
+  }
+}

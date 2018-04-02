@@ -24,14 +24,20 @@ require('../private/header.php');
   </h2>
   <ul class="list">
       <?php
-        $res1 = $db->query("SELECT artworkID, title, yearInstalled, photoURL FROM artworks WHERE status = 'In Place' ORDER BY yearInstalled DESC LIMIT 10");
+        $res1 = $db->query("SELECT artworkID, title, yearInstalled, photoURL
+          FROM artworks
+          WHERE status = 'In Place'
+          ORDER BY yearInstalled DESC
+          LIMIT 10");
         while ($artwork = $res1->fetch_assoc()):
           $artwork_id = $artwork['artworkID'];
           $url = 'artwork.php?id=' . $artwork['artworkID'];
           $title = htmlspecialchars(get_sanitized_text($artwork['title']));
           $year_installed = date('Y', strtotime($artwork['yearInstalled']));
           $photoURL = 'images/empty.png'; // TODO: $artwork['photoURL'];
-          $res2 = $db->query("SELECT A.artistID, A.firstName, A.lastName FROM artists A, artistArtworks AA WHERE A.artistID = AA.artistID AND AA.artworkID = $artwork_id");
+          $res2 = $db->query("SELECT A.artistID, A.firstName, A.lastName
+            FROM artists A, artistArtworks AA
+            WHERE A.artistID = AA.artistID AND AA.artworkID = $artwork_id");
           $count = 0;
       ?>
       <li class="list__item">

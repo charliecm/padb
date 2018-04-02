@@ -3,7 +3,8 @@
  */
 
 .footer {
-  padding-top: rem($drop-margin * 2);
+  background-color: $color-gray-4;
+  padding-top: rem($drop-margin);
   padding-bottom: rem($drop-margin * 2);
   text-align: center;
 }

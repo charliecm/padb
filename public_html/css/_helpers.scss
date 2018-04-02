@@ -24,6 +24,10 @@
   margin-bottom: rem($drop-margin / 2);
 }
 
+.no-drop {
+  margin-bottom: 0;
+}
+
 .split {
   display: flex;
   justify-content: space-between;

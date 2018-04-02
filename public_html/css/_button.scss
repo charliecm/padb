@@ -5,16 +5,18 @@
 .btn {
   display: inline-block;
   position: relative;
-  border: 1px solid $color-gray-4;
+  transition-duration: .12s;
+  transition-property: border, background-color, color;
+  border: 1px solid $color-gray-3;
   border-radius: 3px;
   background-color: $color-white;
   cursor: pointer;
   padding: rem(9px) 2rem rem(8px);
-  color: $color-gray-2;
+  color: $color-gray-1;
   -webkit-appearance: none;
 
   &:hover {
-    color: $color-gray-2;
+    color: $color-gray-1;
   }
 
   &[disabled] {
@@ -38,8 +40,14 @@
 
 .btn--primary {
   border-color: transparent;
-  background-color: $color-black;
+  background-color: $color-gray-1;
   color: $color-white;
+
+  &:not([disabled]) {
+    &:hover, &:active, &:focus, &.-active {
+      background-color: $color-black;
+    }
+  }
 }
 
 .btn--destructive {
