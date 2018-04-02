@@ -82,14 +82,14 @@ require('../private/header.php');
     $total_rows = $stmt->get_result()->fetch_row()[0];
     $total_pages = ceil($total_rows / $limit);
     $stmt->free_result();
-    if ($total_rows < 1):
+    if ($total_rows < 1): // Show no results
   ?>
   <p>
     No artists found.
   </p>
   <?php
     else:
-    // Populate results
+    // Fetch results
     $offset = $limit * ($page - 1);
     $stmt = $db->prepare("SELECT A.artistID, A.firstName, A.lastName, A.photoURL,
       C.name AS country,
@@ -102,14 +102,16 @@ require('../private/header.php');
     if (!empty($types)) call_user_func_array([ $stmt, 'bind_param' ], $params);
     $stmt->execute();
     $res1 = $stmt->get_result();
-    $num_rows = $res1->num_rows;
+    $offset_start = $offset + 1;
+    $offset_end = $offset + $res1->num_rows;
   ?>
   <div class="split drop">
     <div>
-      Displaying <?php echo "$num_rows of $total_rows"; ?> artists<?php echo $filter_desc; ?>.
+      Displaying <?php echo "$offset_start - $offset_end of $total_rows"; ?> artists<?php echo $filter_desc; ?>.
     </div>
     <div>
       <?php
+        // Show sorting options
         $url_params = $_GET;
         $url_params['sort_order'] = $sort_order === 'asc' ? 'desc' : 'asc';
         $sort = get_url_params($url_params);
@@ -120,8 +122,8 @@ require('../private/header.php');
   </div>
   <ul class="list">
     <?php
+      // Populate results
       while ($artist = $res1->fetch_assoc()):
-        // Get artist info
         $artist_id = $artist['artistID'];
         $name = get_artist_name($artist['firstName'], $artist['lastName']);
         $artist_url = "artist.php?id=$artist_id";

@@ -145,14 +145,14 @@ require('../private/header.php');
     $total_rows = $stmt->get_result()->fetch_row()[0];
     $total_pages = ceil($total_rows / $limit);
     $stmt->free_result();
-    if ($total_rows < 1):
+    if ($total_rows < 1): // Show no results
   ?>
   <p>
     No artworks found.
   </p>
   <?php
     else:
-    // Populate results
+    // Fetch results
     $offset = $limit * ($page - 1);
     $stmt = $db->prepare("SELECT artworkID, title, status, yearInstalled, siteAddress, latitude, longitude, photoURL, neighborhoodID, ownerID, typeID
       $query
@@ -162,14 +162,16 @@ require('../private/header.php');
     if (!empty($types)) call_user_func_array([ $stmt, 'bind_param' ], $params);
     $stmt->execute();
     $res1 = $stmt->get_result();
-    $num_rows = $res1->num_rows;
+    $offset_start = $offset + 1;
+    $offset_end = $offset + $res1->num_rows;
   ?>
   <div class="split drop">
     <div>
-      Displaying <?php echo "$num_rows of $total_rows"; ?><?php echo $filter_desc; ?>.
+      Displaying <?php echo "$offset_start - $offset_end of $total_rows"; ?><?php echo $filter_desc; ?>.
     </div>
     <div>
       <?php
+        // Show sorting options
         $url_params = $_GET;
         $url_params['sort'] = 'title';
         $url_params['sort_order'] = 'asc';
@@ -188,16 +190,13 @@ require('../private/header.php');
   </div>
   <ul class="list">
     <?php
+      // Populate results
       while ($artwork = $res1->fetch_assoc()):
         $artwork_id = $artwork['artworkID'];
         $url = "artwork.php?id=$artwork_id";
         $title = htmlspecialchars(get_sanitized_text($artwork['title']));
         $year_installed = date('Y', strtotime($artwork['yearInstalled']));
         $photo_url = 'images/empty.png'; // TODO: $artwork['photoURL'];
-        $res2 = $db->query("SELECT A.artistID, A.firstName, A.lastName
-          FROM artists A, artistArtworks AA
-          WHERE A.artistID = AA.artistID AND AA.artworkID = $artwork_id");
-        $count = 0;
     ?>
     <li class="list__item">
       <a href="<?php echo $url; ?>" class="list__thumbnail" style="background-image:url('<?php echo $photo_url; ?>')"></a>
@@ -208,6 +207,11 @@ require('../private/header.php');
         <small>
           by
           <?php
+            // Show artists
+            $res2 = $db->query("SELECT A.artistID, A.firstName, A.lastName
+              FROM artists A, artistArtworks AA
+              WHERE A.artistID = AA.artistID AND AA.artworkID = $artwork_id");
+            $count = 0;
             while ($artist = $res2->fetch_assoc()):
               $artistID = $artist['artistID'];
               $name = get_artist_name($artist['firstName'], $artist['lastName']);
