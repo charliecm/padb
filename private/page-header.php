@@ -34,7 +34,7 @@ function flag_active($name) {
         <?php
           // Check if logged in
           start_session();
-          if (!empty($_SESSION['user_id'])):
+          if (is_logged_in()):
         ?>
         <li>
           <a href="logout.php">Logout</a>
@@ -46,5 +46,10 @@ function flag_active($name) {
         <?php endif; ?>
       </ul>
     </nav>
+    <?php if (is_logged_in()): ?>
+    <div class="header-status">
+      Logged in as <?php echo $_SESSION['user_name']; ?>
+    </div>
+    <?php endif; ?>
   </div>
 </header>

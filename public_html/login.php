@@ -38,6 +38,7 @@ if (isset($_POST['user']) || isset($_POST['pass'])) {
     // Remember the user
     start_session();
     $_SESSION['user_id'] = $user_id;
+    $_SESSION['user_name'] = $name;
     $_SESSION['message'] = "Welcome back, $name!";
     if (isset($_SESSION['redirect'])) {
       // Redirect to intended page
