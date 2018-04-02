@@ -5,12 +5,13 @@
 // Base -----------------------------------------------------------------------
 
 // Fonts
-$font-primary: Arial, sans-serif;
+$font-primary: 'Roboto', Arial, sans-serif;
 $font-secondary: 'Roboto Mono', Menlo, Consolas, monospace;
 
 // Typographic scale
 $type-factor: 1.3333; // 4/3
 $type-base: 18px;
+$type-base: 16px;
 $type-scale-0: ceil($type-base / $type-factor);
 $type-scale-1: $type-base;
 $type-scale-2: ceil($type-base * $type-factor);

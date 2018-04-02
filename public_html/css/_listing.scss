@@ -8,6 +8,22 @@
   text-align: center;
 }
 
+.listing__profile {
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 50%;
+  background-color: $color-gray-4;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: rem(200px);
+
+  &::after {
+    display: block;
+    padding-top: 100%;
+    content: '';
+  }
+}
+
 .listing__map {
   display: flex;
   align-items: center;
