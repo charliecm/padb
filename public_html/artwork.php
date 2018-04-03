@@ -92,13 +92,20 @@ require('../private/header.php');
       </p>
     </div>
     <div class="col col--8md">
-      <?php if (is_logged_in()): ?>
+      <?php if (is_logged_in()):
+        $user_id = $_SESSION['user_id'];
+        $res = $db->query("SELECT status FROM marks WHERE memberID = $user_id AND artworkID = $id LIMIT 1");
+        $status = '';
+        if ($row = $res->fetch_assoc()) {
+          $status = $row['status'] ?? '';
+        };
+      ?>
       <p class="drop--sm">
-        Add to
-        <a href="" class="btn btn--small">
+        Mark as
+        <a href="#" data-artwork-id="<?php echo $id; ?>" data-status="To See" class="action-mark-artwork btn btn--small<?php if ($status === 'To See') echo ' -active'; ?>">
           To See
         </a>
-        <a href="" class="btn btn--small">
+        <a href="#" data-artwork-id="<?php echo $id; ?>" data-status="Have Seen" class="action-mark-artwork btn btn--small<?php if ($status === 'Have Seen') echo ' -active'; ?>">
           Have Seen
         </a>
       </p>
