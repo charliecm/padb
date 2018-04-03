@@ -10,14 +10,14 @@ $id = (isset($_GET['id'])) ? intval($_GET['id']) : NULL;
 
 if (is_numeric($id)) {
   // Get artist details
-  $res = $db->query("SELECT A.firstName, A.lastName, A.websiteURL, A.biography, A.photoURL, A.countryID,
+  $res = $db->query("SELECT A.firstName, A.lastName, A.websiteURL, A.biography, A.biographyURL, A.photoURL, A.countryID,
     C.name AS country
     FROM artists A
     INNER JOIN countries C ON C.countryID = A.countryID
     WHERE A.artistID = $id");
   $artist = $res->fetch_assoc();
   $name = get_artist_name($artist['firstName'], $artist['lastName']);
-  $website_url = get_sanitized_text($artist['websiteURL']);
+  $website_url = get_sanitized_text($artist['websiteURL'] ?? $artist['biographyURL']);
   $biography = get_sanitized_text($artist['biography']);
   $photo_url = get_sanitized_text($artist['photoURL']);
   $country_id = intval($artist['countryID']);
@@ -65,6 +65,10 @@ require('../private/header.php');
   </h2>
   <p>
     <?php echo $biography; ?>
+  </p>
+  <?php else: ?>
+  <p>
+    No biography.
   </p>
   <?php endif; ?>
   <?php if (!empty($website_url)): ?>
