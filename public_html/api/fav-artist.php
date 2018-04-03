@@ -61,7 +61,7 @@ if ($is_fav) {
   }
   print json_encode([
     'message' => 'Artist is favourited.',
-    'isFav' => true
+    'isFav' => TRUE
   ]);
   exit;
 }
@@ -77,6 +77,6 @@ if (!$res) {
 }
 print json_encode([
   'message' => 'Artist is no longer favourited.',
-  'isFav' => false
+  'isFav' => FALSE
 ]);
 exit;

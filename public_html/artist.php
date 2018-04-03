@@ -54,13 +54,13 @@ require('../private/header.php');
   <?php endif; ?>
   <?php
     if (is_logged_in()):
-      $member_id = $_SESSION['user_id'];
-      $res = $db->query("SELECT * FROM favoriteArtists WHERE memberID = $member_id AND artistID = $id LIMIT 1");
+      $user_id = $_SESSION['user_id'];
+      $res = $db->query("SELECT * FROM favoriteArtists WHERE memberID = $user_id AND artistID = $id LIMIT 1");
       $is_fav = $res->num_rows > 0;
       $btn_text = $is_fav ? 'Favourited' : 'Add to Favourite';
   ?>
   <p class="text-center">
-    <a href="#" data-id="<?php echo $id; ?>" class="action-add-to-fav btn btn--small btn--favorite<?php if ($is_fav) echo ' -active'; ?>">
+    <a href="#" data-artist-id="<?php echo $id; ?>" class="action-fav-artist btn btn--small btn--favorite<?php if ($is_fav) echo ' -active'; ?>">
       <?php echo $btn_text; ?>
     </a>
   </p>
