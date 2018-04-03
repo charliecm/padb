@@ -45,10 +45,10 @@ $(function() {
         isFav: false
       },
       function() {
-        var $list = $btn.parent('.list');
+        var $list = $btn.parents('.list');
         if ($list.children().length === 1) {
           // Show empty state copy
-          $list.siblings('.empty-copy').removeClass('-hidden');
+          $list.prev('.empty-copy').removeClass('-hidden');
         }
         $btn.off('click')
           .parent().remove();
@@ -94,10 +94,10 @@ $(function() {
         status: null
       },
       function() {
-        var $list = $btn.parent('.list');
+        var $list = $btn.parents('.list');
         if ($list.children().length === 1) {
           // Show empty state copy
-          $list.siblings('.empty-copy').removeClass('-hidden');
+          $list.prev('.empty-copy').removeClass('-hidden');
         }
         $btn.off('click')
           .parent().remove();
