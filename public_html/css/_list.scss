@@ -45,4 +45,10 @@
 
 .list__text {
   align-self: center;
+  width: 100%;
+}
+
+.list__cta {
+  align-self: center;
+  margin-left: rem($grid-gutter);
 }

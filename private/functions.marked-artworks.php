@@ -11,17 +11,15 @@ function show_marked_artworks($status) {
     FROM artworks A
     INNER JOIN marks M ON M.artworkID = A.artworkID
     WHERE M.memberID = $user_id AND M.status = '$status'");
-  if ($res1->num_rows < 1):
 ?>
-<p>
-  No artworks marked as to see yet.
+<p class="empty-copy<?php if ($res1->num_rows > 0) echo ' -hidden'; ?>">
+  <?php echo ($status === 'To See') ? 'No artworks marked as to see.' : 'No artworks marked as seen.'; ?>
 </p>
-<?php else: ?>
 <ul class="list">
   <?php
     // Populate artworks
     while ($artwork = $res1->fetch_assoc()):
-      $artwork_id = $artwork['artworkID'];
+      $artwork_id = intval($artwork['artworkID']);
       $url = 'artwork.php?id=' . $artwork['artworkID'];
       $title = htmlspecialchars(get_sanitized_text($artwork['title']));
       $year_installed = date('Y', strtotime($artwork['yearInstalled']));
@@ -42,17 +40,19 @@ function show_marked_artworks($status) {
             WHERE A.artistID = AA.artistID AND AA.artworkID = $artwork_id");
           $count = 0;
           while ($artist = $res2->fetch_assoc()):
-            $artistID = $artist['artistID'];
+            $artist_id = $artist['artistID'];
             $name = get_artist_name($artist['firstName'], $artist['lastName']);
-        ?><?php if ($count++) echo ', '; ?><a href="artist.php?id=<?php echo $artistID; ?>" class="a-lite"><?php echo $name ?></a><?php endwhile; ?>
+        ?><?php if ($count++) echo ', '; ?><a href="artist.php?id=<?php echo $artist_id; ?>" class="a-lite"><?php echo $name ?></a><?php endwhile; ?>
         in <?php echo $year_installed; ?>
         <?php $res2->free(); ?>
       </small>
     </div>
+    <a href="#" data-artwork-id="<?php echo $artwork_id; ?>" data-artwork-title="<?php echo $title; ?>" class="action-unmark-artwork btn btn--destructive list__cta">
+      Remove
+    </a>
   </li>
   <?php endwhile; ?>
 </ul>
-<?php endif; ?>
 <?php
     $res1->free();
     $db->close();

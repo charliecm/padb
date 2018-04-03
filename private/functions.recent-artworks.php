@@ -16,7 +16,7 @@ function show_recent_artworks() {
   <?php
     // Populate artworks
     while ($artwork = $res1->fetch_assoc()):
-      $artwork_id = $artwork['artworkID'];
+      $artwork_id = intval($artwork['artworkID']);
       $url = 'artwork.php?id=' . $artwork['artworkID'];
       $title = htmlspecialchars(get_sanitized_text($artwork['title']));
       $year_installed = date('Y', strtotime($artwork['yearInstalled']));
@@ -48,7 +48,7 @@ function show_recent_artworks() {
   <?php endwhile; ?>
 </ul>
 <p>
-  <a href="artworks.php" class="btn">View All</a>
+  <a href="artworks.php?sort=year&sort_order=desc" class="btn">View All</a>
 </p>
 <?php
     $res1->free();

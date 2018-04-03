@@ -53,10 +53,12 @@
 }
 
 .btn--destructive {
-  background-color: $color-error;
 
-  &:hover, &:active {
-    background-color: $color-error-hover;
+  &:not([disabled]) {
+    &:hover, &:active {
+      background-color: $color-error;
+      color: $color-white;
+    }
   }
 }
 

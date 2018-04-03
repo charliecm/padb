@@ -47,7 +47,7 @@ require('../private/header.php');
             // Populate type select box
             $res = $db->query("SELECT typeID, type FROM types");
             while ($type = $res->fetch_assoc()):
-              $id = $type['typeID'];
+              $id = intval($type['typeID']);
               $name = get_sanitized_text($type['type']);
               $selected = $search_type_id === intval($id);
               if ($selected) $search_type_name = get_artwork_type_plural($name);
@@ -65,7 +65,7 @@ require('../private/header.php');
             // Populate neighborhood select box
             $res = $db->query("SELECT neighborhoodID, name FROM neighborhoods");
             while ($neighborhood = $res->fetch_assoc()):
-              $id = $neighborhood['neighborhoodID'];
+              $id = intval($neighborhood['neighborhoodID']);
               $name = get_sanitized_text($neighborhood['name']);
               $selected = $search_neighborhood_id === intval($id);
               if ($selected) $search_neighborhood_name = $name;
@@ -83,7 +83,7 @@ require('../private/header.php');
             // Populate owner select box
             $res = $db->query("SELECT ownerID, name FROM owners");
             while ($owner = $res->fetch_assoc()):
-              $id = $owner['ownerID'];
+              $id = intval($owner['ownerID']);
               $name = get_sanitized_text($owner['name']);
               $selected = $search_owner_id === intval($id);
               if ($selected) $search_owner_name = $name;
@@ -192,7 +192,7 @@ require('../private/header.php');
     <?php
       // Populate results
       while ($artwork = $res1->fetch_assoc()):
-        $artwork_id = $artwork['artworkID'];
+        $artwork_id = intval($artwork['artworkID']);
         $url = "artwork.php?id=$artwork_id";
         $title = htmlspecialchars(get_sanitized_text($artwork['title']));
         $year_installed = date('Y', strtotime($artwork['yearInstalled']));

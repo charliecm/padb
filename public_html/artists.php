@@ -39,7 +39,7 @@ require('../private/header.php');
         // Populate country select box
         $res = $db->query("SELECT countryID, name FROM countries");
         while ($country = $res->fetch_assoc()):
-          $id = $country['countryID'];
+          $id = intval($country['countryID']);
           $name = get_sanitized_text($country['name']);
           $selected = $search_country_id === intval($id);
           if ($selected) $search_country_name = $name;
@@ -124,12 +124,12 @@ require('../private/header.php');
     <?php
       // Populate results
       while ($artist = $res1->fetch_assoc()):
-        $artist_id = $artist['artistID'];
+        $artist_id = intval($artist['artistID']);
         $name = get_artist_name($artist['firstName'], $artist['lastName']);
         $artist_url = "artist.php?id=$artist_id";
         $photo_url = get_artist_photo($artist['photoURL']);
         $country = get_sanitized_text($artist['country']);
-        $artworks = $artist['artworks'];
+        $artworks = intval($artist['artworks']);
     ?>
     <li class="list__item">
       <a href="<?php echo $artist_url; ?>" class="list__thumbnail list__thumbnail--person" style="background-image:url('<?php echo $photo_url; ?>')"></a>
