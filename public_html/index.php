@@ -7,7 +7,6 @@ require('../private/functions.php');
 
 $page_id = 'home';
 $page_title = 'Dashboard' . get_site_title_suffix();
-$db = db_connect();
 
 require('../private/header.php');
 ?>
@@ -45,25 +44,19 @@ require('../private/header.php');
   <h2>
     Artworks To See
   </h2>
-  <p>
-    No artworks marked as to see yet.
-  </p>
+  <?php show_marked_artworks('To See'); ?>
   <h2>
     Favourite Artists
   </h2>
-  <p>
-    No favourite artists yet.
-  </p>
+  <?php show_favorite_artists(); ?>
   <h2>
     Recently Installed
   </h2>
-  <?php include('../private/list-recent-artworks.php'); ?>
+  <?php show_recent_artworks(); ?>
   <h2>
     Artworks Already Seen
   </h2>
-  <p>
-    No artworks already seen yet.
-  </p>
+  <?php show_marked_artworks('Have Seen'); ?>
   <?php endif; ?>
 </section>
 

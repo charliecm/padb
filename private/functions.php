@@ -225,4 +225,7 @@ function get_artist_photo($url) {
 
 // Include other functions
 require_once('functions.pagination.php');
+require_once('functions.recent-artworks.php');
+require_once('functions.marked-artworks.php');
+require_once('functions.favorite-artists.php');
 ?>

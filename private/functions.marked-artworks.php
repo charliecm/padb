@@ -1,11 +1,25 @@
+<?php
+/**
+ * Marked Artworks List
+ */
+
+function show_marked_artworks($status) {
+  // Fetch artworks by status
+  $db = db_connect();
+  $user_id = $_SESSION['user_id'];
+  $res1 = $db->query("SELECT A.artworkID, A.title, A.yearInstalled, A.photoURL
+    FROM artworks A
+    INNER JOIN marks M ON M.artworkID = A.artworkID
+    WHERE M.memberID = $user_id AND M.status = '$status'");
+  if ($res1->num_rows < 1):
+?>
+<p>
+  No artworks marked as to see yet.
+</p>
+<?php else: ?>
 <ul class="list">
   <?php
     // Populate artworks
-    $res1 = $db->query("SELECT artworkID, title, yearInstalled, photoURL
-      FROM artworks
-      WHERE status = 'In Place'
-      ORDER BY yearInstalled DESC
-      LIMIT 5");
     while ($artwork = $res1->fetch_assoc()):
       $artwork_id = $artwork['artworkID'];
       $url = 'artwork.php?id=' . $artwork['artworkID'];
@@ -32,11 +46,15 @@
             $name = get_artist_name($artist['firstName'], $artist['lastName']);
         ?><?php if ($count++) echo ', '; ?><a href="artist.php?id=<?php echo $artistID; ?>" class="a-lite"><?php echo $name ?></a><?php endwhile; ?>
         in <?php echo $year_installed; ?>
+        <?php $res2->free(); ?>
       </small>
     </div>
   </li>
   <?php endwhile; ?>
 </ul>
-<p>
-  <a href="artworks.php" class="btn">View All</a>
-</p>
+<?php endif; ?>
+<?php
+    $res1->free();
+    $db->close();
+  }
+?>
