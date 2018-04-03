@@ -1,6 +1,7 @@
 <?php
 /**
  * Notice
+ * TODO: Add notice type (success/error).
  */
 
 start_session();
@@ -18,7 +19,7 @@ endif;
 if (isset($_SESSION['first_time'])):
 ?>
 <p class="notice">
-  <?php echo 'Welcome to PADb, ' . htmlspecialchars($_SESSION['first_time']) . '!'; ?>
+  <?php echo 'Welcome to PADb, ' . htmlspecialchars($_SESSION['first_time']) . '! You can now track artworks as to see or seen, and add artists to your favourites list.'; ?>
 </p>
 <?php
   unset($_SESSION['first_time']);
