@@ -37,9 +37,15 @@ function flag_active($name) {
           if (is_logged_in()):
         ?>
         <li>
+          <a href="settings.php"<?php flag_active('settings'); ?>>Settings</a>
+        </li>
+        <li>
           <a href="logout.php">Logout</a>
         </li>
         <?php else: ?>
+        <li>
+        <a href="login.php"<?php flag_active('login'); ?>>Login</a>
+        </li>
         <li>
           <a href="register.php"<?php flag_active('register'); ?>>Register</a>
         </li>
