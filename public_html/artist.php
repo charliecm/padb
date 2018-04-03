@@ -31,7 +31,7 @@ require('../private/header.php');
 ?>
 
 <section class="l-section l-wrap l-wrap--sm">
-  <?php include_once('../private/notice.php'); ?>
+  <?php show_global_notices(); ?>
   <p>
     <a href="artists.php">&lsaquo; View All Artists</a>
   </p>

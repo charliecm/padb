@@ -26,7 +26,7 @@ require('../private/header.php');
 ?>
 
 <section class="l-section l-wrap">
-  <?php include_once('../private/notice.php'); ?>
+  <?php show_global_notices(); ?>
   <h1>
     Artworks
   </h1>

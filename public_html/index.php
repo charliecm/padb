@@ -12,7 +12,7 @@ require('../private/header.php');
 ?>
 
 <section class="l-section l-wrap l-wrap--md">
-  <?php include_once('../private/notice.php'); ?>
+  <?php show_global_notices(); ?>
   <?php if (!is_logged_in()): // Show visitor page ?>
   <h1 class="visually-hidden">
     PADb

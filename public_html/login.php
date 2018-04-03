@@ -66,7 +66,7 @@ require('../private/header.php');
     Please log into your account first.
   </p>
   <?php endif; ?>
-  <?php include_once('../private/notice.php'); ?>
+  <?php show_global_notices(); ?>
   <h2>
     Login
   </h2>

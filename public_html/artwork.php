@@ -45,7 +45,7 @@ require('../private/header.php');
 ?>
 
 <section class="l-section l-wrap">
-  <?php include_once('../private/notice.php'); ?>
+  <?php show_global_notices(); ?>
   <p>
     <a href="artworks.php">&lsaquo; View All Artworks</a>
   </p>
