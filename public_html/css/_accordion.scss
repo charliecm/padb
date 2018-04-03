@@ -10,10 +10,13 @@
   box-shadow: $btn-shadow;
   background-color: $color-gray-5;
   cursor: pointer;
-  padding: .25rem .75rem;
+  padding: rem(7px) .75rem rem(5px);
+  color: inherit;
+  font-size: rem($type-scale-1);
 
   &:hover {
     background-color: $color-gray-4;
+    color: inherit;
   }
 
   &::after {
@@ -37,7 +40,7 @@
 
   &.-hidden {
     display: block;
-    opacity: .2;
+    opacity: .3;
     margin-bottom: rem($drop-margin);
     height: rem(26px);
     overflow-y: hidden;

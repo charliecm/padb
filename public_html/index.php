@@ -52,26 +52,34 @@ require('../private/header.php');
   <p>
     Public Art Database (PADb) is your source for public artworks in Vancouver.
   </p>
-  <h2 data-id="toSee" class="accordion__header<?php echo is_active('toSee') ? ' -active' : ''; ?>">
-    To See
+  <h2>
+    <a href="#" data-id="toSee" class="accordion__header<?php echo is_active('toSee') ? ' -active' : ''; ?>">
+      To See
+    </a>
   </h2>
   <div class="accordion__body<?php echo is_active('toSee') ? '' : ' -hidden'; ?>">
     <?php show_marked_artworks('To See'); ?>
   </div>
-  <h2 data-id="seen" class="accordion__header<?php echo is_active('seen') ? ' -active' : ''; ?>">
-    Have Seen
+  <h2>
+    <a href="#" data-id="seen" class="accordion__header<?php echo is_active('seen') ? ' -active' : ''; ?>">
+      Have Seen
+    </a>
   </h2>
   <div class="accordion__body<?php echo is_active('seen') ? '' : ' -hidden'; ?>">
     <?php show_marked_artworks('Seen'); ?>
   </div>
-  <h2 data-id="favs" class="accordion__header<?php echo is_active('favs') ? ' -active' : ''; ?>">
-    Favourite Artists
+  <h2>
+    <a href="#" data-id="favs" class="accordion__header<?php echo is_active('favs') ? ' -active' : ''; ?>">
+      Favourite Artists
+    </a>
   </h2>
   <div class="accordion__body<?php echo is_active('favs') ? '' : ' -hidden'; ?>">
     <?php show_favorite_artists(); ?>
   </div>
-  <h2 data-id="recent" class="accordion__header<?php echo is_active('recent') ? ' -active' : ''; ?>">
-    Recently Installed
+  <h2>
+    <a href="#" data-id="recent" class="accordion__header<?php echo is_active('recent') ? ' -active' : ''; ?>">
+      Recently Installed
+    </a>
   </h2>
   <div class="accordion__body<?php echo is_active('recent') ? '' : ' -hidden'; ?>">
     <?php show_recent_artworks(); ?>

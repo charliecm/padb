@@ -10,7 +10,7 @@
   box-shadow: $btn-shadow;
   background-color: $color-white;
   cursor: pointer;
-  padding: rem(11px) 1.5rem rem(9px);
+  padding: rem(11px) 1.25rem rem(9px);
   line-height: 1;
   color: $color-gray-1;
   font-size: rem($type-base);
@@ -26,7 +26,7 @@
   }
 
   &:not([disabled]) {
-    &:hover, &:active, &:focus, &.-active {
+    &:hover, &:active, &:focus {
       background-color: $color-gray-4;
       text-decoration: none;
     }
@@ -34,6 +34,14 @@
     &:active {
       top: 2px;
       box-shadow: none;
+    }
+
+    &.-active {
+      border-color: transparent;
+      box-shadow: $btn-shadow-dark;
+      background-color: $color-gray-1;
+      text-decoration: none;
+      color: $color-white;
     }
   }
 }
@@ -66,7 +74,9 @@
 .btn--favorite {
   &:not([disabled]) {
     &.-active {
+      border-color: transparent;
       background-color: $color-success;
+      color: $color-white;
     }
   }
 }
