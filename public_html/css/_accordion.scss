@@ -5,8 +5,9 @@
 .accordion__header {
   display: flex;
   justify-content: space-between;
-  border: 1px solid $color-gray-4;
-  border-radius: 3px;
+  border: 1px solid $color-gray-3;
+  border-radius: rem($input-border-radius);
+  box-shadow: $btn-shadow;
   background-color: $color-gray-5;
   cursor: pointer;
   padding: .25rem .75rem;
@@ -17,7 +18,7 @@
 
   &::after {
     float: right;
-    color: $color-gray-2;
+    color: $color-gray-3;
     content: '+';
   }
 
@@ -38,7 +39,7 @@
     display: block;
     opacity: .2;
     margin-bottom: rem($drop-margin);
-    height: rem(30px);
+    height: rem(26px);
     overflow-y: hidden;
 
     &::after {

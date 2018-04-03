@@ -11,7 +11,7 @@ input:not([type='submit']):not([type='reset']):not([type='radio']), textarea, se
   display: block;
   position: relative;
   border: solid 1px $color-gray-3;
-  border-radius: 3px;
+  border-radius: rem($input-border-radius);
   padding: .5rem;
   -webkit-appearance: none;
 }
@@ -42,12 +42,19 @@ input:not([type='submit']):not([type='reset']):not([type='radio']), textarea, se
 // Select wrapper
 .form-select {
   position: relative;
-  border-radius: 3px;
+  border-radius: rem($input-border-radius);
+  box-shadow: $btn-shadow;
+
+  > select {
+    width: 100%;
+    cursor: pointer;
+  }
+
+  &:hover > select {
+    background-color: $color-gray-4;
+  }
 }
 
-.form-select > select {
-  width: 100%;
-}
 
 .form-select::after {
   position: absolute;

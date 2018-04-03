@@ -106,6 +106,7 @@ $(function() {
     );
   });
 
+  // Add accordion interaction
   $('.accordion__header').on('click', function(event) {
     event.preventDefault();
     var $header = $(this);

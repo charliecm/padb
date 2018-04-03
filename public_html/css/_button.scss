@@ -5,10 +5,9 @@
 .btn {
   display: inline-block;
   position: relative;
-  transition-duration: .12s;
-  transition-property: border, background-color, color;
   border: 1px solid $color-gray-3;
-  border-radius: 3px;
+  border-radius: rem($input-border-radius);
+  box-shadow: $btn-shadow;
   background-color: $color-white;
   cursor: pointer;
   padding: rem(11px) 1.5rem rem(9px);
@@ -28,34 +27,36 @@
 
   &:not([disabled]) {
     &:hover, &:active, &:focus, &.-active {
-      border-color: transparent;
-      background-color: $color-gray-1;
+      background-color: $color-gray-4;
       text-decoration: none;
-      color: $color-white;
     }
 
     &:active {
       top: 2px;
+      box-shadow: none;
     }
   }
 }
 
 .btn--primary {
   border-color: transparent;
+  box-shadow: $btn-shadow-dark;
   background-color: $color-anchor;
   color: $color-white;
 
   &:not([disabled]) {
     &:hover, &:active, &:focus, &.-active {
       background-color: $color-anchor-hover;
+      color: $color-white;
     }
   }
 }
 
 .btn--destructive {
-
   &:not([disabled]) {
     &:hover, &:active {
+      border-color: transparent;
+      box-shadow: $btn-shadow-dark;
       background-color: $color-error;
       color: $color-white;
     }
