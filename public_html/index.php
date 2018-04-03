@@ -34,29 +34,48 @@ require('../private/header.php');
     Recently Installed
   </h2>
   <?php show_recent_artworks(); ?>
-  <?php else: ?>
+  <?php
+    else:
+    // Load accordion preferences
+    $db = db_connect();
+    $user_id = $_SESSION['user_id'];
+    $res = $db->query("SELECT preferences FROM members WHERE memberID = $user_id");
+    $old_prefs = json_decode($res->fetch_assoc()['preferences'] ?? [], true);
+    function is_active($id) {
+      global $old_prefs;
+      return isset($old_prefs[$id]) && $old_prefs[$id] === TRUE ? TRUE : FALSE;
+    }
+  ?>
   <h1>
     Dashboard
   </h1>
   <p>
     Public Art Database (PADb) is your source for public artworks in Vancouver.
   </p>
-  <h2>
-    Artworks To See
+  <h2 data-id="toSee" class="accordion__header<?php echo is_active('toSee') ? ' -active' : ''; ?>">
+    To See
   </h2>
-  <?php show_marked_artworks('To See'); ?>
-  <h2>
+  <div class="accordion__body<?php echo is_active('toSee') ? '' : ' -hidden'; ?>">
+    <?php show_marked_artworks('To See'); ?>
+  </div>
+  <h2 data-id="seen" class="accordion__header<?php echo is_active('seen') ? ' -active' : ''; ?>">
+    Have Seen
+  </h2>
+  <div class="accordion__body<?php echo is_active('seen') ? '' : ' -hidden'; ?>">
+    <?php show_marked_artworks('Seen'); ?>
+  </div>
+  <h2 data-id="favs" class="accordion__header<?php echo is_active('favs') ? ' -active' : ''; ?>">
     Favourite Artists
   </h2>
-  <?php show_favorite_artists(); ?>
-  <h2>
+  <div class="accordion__body<?php echo is_active('favs') ? '' : ' -hidden'; ?>">
+    <?php show_favorite_artists(); ?>
+  </div>
+  <h2 data-id="recent" class="accordion__header<?php echo is_active('recent') ? ' -active' : ''; ?>">
     Recently Installed
   </h2>
-  <?php show_recent_artworks(); ?>
-  <h2>
-    Artworks Already Seen
-  </h2>
-  <?php show_marked_artworks('Seen'); ?>
+  <div class="accordion__body<?php echo is_active('recent') ? '' : ' -hidden'; ?>">
+    <?php show_recent_artworks(); ?>
+  </div>
   <?php endif; ?>
 </section>
 

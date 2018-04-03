@@ -35,12 +35,11 @@ if (!isset($_POST['artistID']) || !isset($_POST['isFav'])) {
   exit;
 }
 
+ob_start();
+$db = db_connect();
 $member_id = $_SESSION['user_id'];
 $artist_id = intval($_POST['artistID']);
 $is_fav = $_POST['isFav'] === 'true';
-
-ob_start();
-$db = db_connect();
 
 if ($is_fav) {
   // Add artist to favourites

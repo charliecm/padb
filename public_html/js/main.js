@@ -106,4 +106,19 @@ $(function() {
     );
   });
 
+  $('.accordion__header').on('click', function(event) {
+    event.preventDefault();
+    var $header = $(this);
+    var isActive = !$header.next('.accordion__body').toggleClass('-hidden').hasClass('-hidden');
+    var id = this.dataset.id;
+    var post = {};
+    post[id] = isActive;
+    $header.toggleClass('-active', isActive);
+    $.post('api/update-prefs.php', post,
+      function(data) {
+        console.log(data.preferences);
+      }
+    );
+  });
+
 });
