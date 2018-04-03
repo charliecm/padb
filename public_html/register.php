@@ -55,7 +55,8 @@ if (isset($_POST['email']) ||
     if ($stmt->affected_rows > 0) {
       start_session();
       $_SESSION['user_id'] = $stmt->insert_id;
-      $_SESSION['first_time'] = htmlspecialchars($name);
+      $_SESSION['user_name'] = $name;
+      $_SESSION['first_time'] = $name;
       if (isset($_SESSION['redirect'])) {
         // Redirect to intended page
         header('Location: ' . $_SESSION['redirect']);
