@@ -34,7 +34,7 @@ require('../private/header.php');
   <h2>
     Recently Installed
   </h2>
-  <?php include('../private/recent-artworks.php'); ?>
+  <?php include('../private/list-recent-artworks.php'); ?>
   <?php else: ?>
   <h1>
     Dashboard
@@ -43,18 +43,27 @@ require('../private/header.php');
     Public Art Database (PADb) is your source for public artworks in Vancouver.
   </p>
   <h2>
-    To See
+    Artworks To See
   </h2>
+  <p>
+    No artworks marked as to see yet.
+  </p>
   <h2>
     Favourite Artists
   </h2>
+  <p>
+    No favourite artists yet.
+  </p>
   <h2>
     Recently Installed
   </h2>
-  <?php include('../private/recent-artworks.php'); ?>
+  <?php include('../private/list-recent-artworks.php'); ?>
   <h2>
-    Have Seen
+    Artworks Already Seen
   </h2>
+  <p>
+    No artworks already seen yet.
+  </p>
   <?php endif; ?>
 </section>
 
