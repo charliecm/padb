@@ -24,6 +24,10 @@
   margin-bottom: rem($drop-margin / 2);
 }
 
+.drop-lg {
+  margin-bottom: rem($drop-margin * 1.5);
+}
+
 .no-drop {
   margin-bottom: 0;
 }

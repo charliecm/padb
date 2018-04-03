@@ -7,8 +7,10 @@ require('../private/functions.php');
 
 ensure_https();
 
+$page_id = 'login';
 $page_title = 'Login' . get_site_title_suffix();
 $inputs = null;
+$has_errors = false;
 $login_failed = false;
 
 if (isset($_POST['user']) || isset($_POST['pass'])) {
@@ -27,32 +29,32 @@ if (isset($_POST['user']) || isset($_POST['pass'])) {
     $inputs['pass']['error'] = 'Please enter your password.';
     $has_errors = true;
   }
-  // Connect to database
-  $db = db_connect();
-  $query = "SELECT memberID, password, name FROM members WHERE email = ? LIMIT 1";
-  $stmt = $db->prepare($query);
-  $stmt->bind_param('s', $user);
-  $stmt->bind_result($user_id, $hpass, $name);
-  $stmt->execute();
-  if ($stmt->fetch() && password_verify($pass, $hpass)) {
-    // Remember the user
-    start_session();
-    $_SESSION['user_id'] = $user_id;
-    $_SESSION['user_name'] = $name;
-    $_SESSION['message'] = "Welcome back, $name!";
-    if (isset($_SESSION['redirect'])) {
-      // Redirect to intended page
-      header('Location: '. $_SESSION['redirect']);
+  if (!$has_errors) {
+    // Attempt login
+    $db = db_connect();
+    $query = "SELECT memberID, password, name FROM members WHERE email = ? LIMIT 1";
+    $stmt = $db->prepare($query);
+    $stmt->bind_param('s', $user);
+    $stmt->bind_result($user_id, $hpass, $name);
+    $stmt->execute();
+    if ($stmt->fetch() && password_verify($pass, $hpass)) {
+      // Remember the user
+      start_session();
+      $_SESSION['user_id'] = $user_id;
+      $_SESSION['user_name'] = $name;
+      $_SESSION['message'] = "Welcome back, $name!";
+      if (isset($_SESSION['redirect'])) {
+        // Redirect to intended page
+        header('Location: '. $_SESSION['redirect']);
+      } else {
+        header('Location: index.php');
+      }
+      exit;
     } else {
-      header('Location: index.php');
+      $login_failed = true;
     }
-    exit;
-  } else {
-    $login_failed = true;
+    $stmt->free_result();
   }
-  // Clean up
-  $stmt->free_result();
-  $db->close();
 }
 
 require('../private/header.php');
@@ -73,30 +75,26 @@ require('../private/header.php');
     Invalid email or password. Please try again!
   </p>
   <?php endif;?>
-  <form method="post" class="form--small">
-    <div class="form-fieldset">
-      <div class="form-field">
-        <label class="form-label">
-          Email
-        </label>
-        <div class="fill-width">
-          <input type="text" name="user" required class="fill-width<?php form_highlight_error($inputs, 'user'); ?>"<?php form_fill_input($inputs, 'user', 'text'); ?>>
-          <?php form_display_error($inputs, 'user'); ?>
-        </div>
-      </div>
-      <div class="form-field">
-        <label class="form-label">
-          Password
-        </label>
-        <div class="fill-width">
-          <input type="password" name="pass" required class="fill-width<?php form_highlight_error($inputs, 'pass'); ?>"<?php form_fill_input($inputs, 'pass', 'text'); ?>>
-          <?php form_display_error($inputs, 'pass'); ?>
-        </div>
+  <form method="post" class="form--small drop">
+    <div class="form-field drop-sm">
+      <label class="form-label">
+        Email
+      </label>
+      <div class="fill-width">
+        <input type="text" name="user" required class="fill-width<?php form_highlight_error($inputs, 'user'); ?>"<?php form_fill_input($inputs, 'user', 'text'); ?>>
+        <?php form_display_error($inputs, 'user'); ?>
       </div>
     </div>
-    <div class="form-fieldset">
-      <input type="submit" value="Login" class="btn">
+    <div class="form-field drop">
+      <label class="form-label">
+        Password
+      </label>
+      <div class="fill-width">
+        <input type="password" name="pass" required class="fill-width<?php form_highlight_error($inputs, 'pass'); ?>"<?php form_fill_input($inputs, 'pass', 'text'); ?>>
+        <?php form_display_error($inputs, 'pass'); ?>
+      </div>
     </div>
+    <input type="submit" value="Login" class="btn">
   </form>
   <p>
     Not registered yet?
