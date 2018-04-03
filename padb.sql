@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 27, 2018 at 10:45 PM
+-- Generation Time: Apr 03, 2018 at 10:30 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -1185,7 +1185,7 @@ INSERT INTO `artists` (`artistID`, `firstName`, `lastName`, `websiteURL`, `biogr
 (326, 'Brent', 'Sparrow', NULL, 'Brent Sparrow is a member of the Musqueam First Nation in Vancouver. Brent began his apprenticeship in 2006, carving with his mother, Susan Point, and master carver John Livingston. He continues to explore his heritage and all the possibilities of the Coast Salish art form, paying tribute to his Salish legacy.', 'https://covapp.vancouver.ca/PublicArtRegistry/ArtistDetail.aspx?FromArtistIndex=False&ArtistId=337', NULL, 2),
 (327, 'Inge', 'Roecker', 'http://www.asirarch.net', 'Committed to interdisciplinary built work research and that explores the interface between cultural identity, art and environmental function. The German office was established in 2002 by Inge Roecker followed by a Vancouver, BC office in 2005. In 2008 Jens Christian Beck and Chris Hunter joined ASIRstudio. The studio has been recognized with several international design awards. Both offices are working collaboratively on projects in Europe, Asia, and North America. We embrace and integrate the culture of our local communities into our work and engage individuals in the active production of community.', 'https://covapp.vancouver.ca/PublicArtRegistry/ArtistDetail.aspx?FromArtistIndex=False&ArtistId=338', NULL, 2),
 (328, 'Chris', 'Hunter', 'http://asirstudio.net', 'Committed to interdisciplinary built work research and that explores the interface between cultural identity, art and environmental function. The German office was established in 2002 by Inge Roecker followed by a Vancouver, BC office in 2005. In 2008 Jens Christian Beck and Chris Hunter joined ASIRstudio. The studio has been recognized with several international design awards. Both offices are working collaboratively on projects in Europe, Asia, and North America. We embrace and integrate the culture of our local communities into our work and engage individuals in the active production of community.', 'https://covapp.vancouver.ca/PublicArtRegistry/ArtistDetail.aspx?FromArtistIndex=False&ArtistId=339', NULL, 2),
-(329, 'Jenipher', 'Hur', NULL, '2010 DINNER HERE, 221a Artist Run Centre, Vancouver                2009 TROPICS TO THE HERBARIUM, Helen Pitt Gallery, Vancouver2009 Emily Carr University of Art + Design Grad show 2009, Vancouver 2008 FLAB, Helen Pitt Gallery, Vancouver 2008		WHAT HAVE YOU BEEN UP TO?, Studio 146 Hastings, Vancouver 2008 TWENTY THOUSAND PENNIES, Canvas Gallery, Vancouver2008 GoGo Space, Vancouver2008 SLIGHT OF HAND, Concourse Gallery, Vancouver2007 MOMENTARY EQUILIBRIUM OF THE FANTASY HARMONY SCHEMATIC, Helen Pitt Gallery, Vancouver2007 8th ANNUAL PORT MOODY STUDIO TOUR, Esplanade Studio, Port Moody2007 POINT OF VIEW, Concourse Gallery, Vancouver 2007 A SHOW ABOUT RITUAL, Concourse Gallery, Vancouver2006 TRANS/FORMERS, Concourse Gallery, Vancouver', 'https://covapp.vancouver.ca/PublicArtRegistry/ArtistDetail.aspx?FromArtistIndex=False&ArtistId=340', NULL, 2),
+(329, 'Jenipher', 'Hur', NULL, '2010 DINNER HERE, 221a Artist Run Centre, Vancouver                2009 TROPICS TO THE HERBARIUM, Helen Pitt Gallery, Vancouver2009 Emily Carr University of Art + Design Grad show 2009, Vancouver 2008 FLAB, Helen Pitt Gallery, Vancouver 2008   WHAT HAVE YOU BEEN UP TO?, Studio 146 Hastings, Vancouver 2008 TWENTY THOUSAND PENNIES, Canvas Gallery, Vancouver2008 GoGo Space, Vancouver2008 SLIGHT OF HAND, Concourse Gallery, Vancouver2007 MOMENTARY EQUILIBRIUM OF THE FANTASY HARMONY SCHEMATIC, Helen Pitt Gallery, Vancouver2007 8th ANNUAL PORT MOODY STUDIO TOUR, Esplanade Studio, Port Moody2007 POINT OF VIEW, Concourse Gallery, Vancouver 2007 A SHOW ABOUT RITUAL, Concourse Gallery, Vancouver2006 TRANS/FORMERS, Concourse Gallery, Vancouver', 'https://covapp.vancouver.ca/PublicArtRegistry/ArtistDetail.aspx?FromArtistIndex=False&ArtistId=340', NULL, 2),
 (330, 'Osvaldo', 'Yero', NULL, 'Osvaldo Yero was born in Cuba in 1969 and immigrated to Canada in 1997. He currently lives and works in Vancouver, British Columbia. Working mainly in sculpture and installation, Yero has consistently been concerned with themes that relate to his experience as part of the growing diaspora of Cuba.  Politically and socially charged, Yero’s work contends with issues of national identity and plays with the boundaries of kitsch and high art, frequently comprising small-scale ceramic objects that reference pop art and the tourist souvenir.  Metaphors of death and water are prevalent throughout Yero’s practice. Through large-scale installations, he has explored the effect of the multiple on the bodily experience of the viewer. Most recently he has investigated the effects of light on the eye through his sculptural light installation Passage, which will be presented at Access Gallery as part of the public art project Bright Light, commissioned by the City of Vancouver.Solo exhibitions of Yero’s work include: Loop galeria 23 y 12, Havana, Cuba (2008); Hereafter, Xeno Gallery, Dadabase, Vancouver, BC (2003); Landmark, Belkin Satellite Vancouver, BC (2002); Transplant, Grunt Gallery, Vancouver, BC (2002). Recent group exhibitions include: F.A.R.Xchange 1: The Desert Between Us, Future Arts Research, Arizona State University, Phoenix AZ (2008); Nuit Blanche Toronto ON (2006); Contemporary Art From Cuba: Irony and Survival on the Utopian Island, a traveling exhibition organized by Arizona State Art Museum, and circulated by Independent Curators International (ICI), New York (2001).', 'https://covapp.vancouver.ca/PublicArtRegistry/ArtistDetail.aspx?FromArtistIndex=False&ArtistId=341', NULL, 2),
 (331, 'Mark', 'Manders', 'http://www.markmanders.org', NULL, 'https://covapp.vancouver.ca/PublicArtRegistry/ArtistDetail.aspx?FromArtistIndex=False&ArtistId=342', NULL, 14),
 (332, 'Steve', 'Hornung', NULL, NULL, 'https://covapp.vancouver.ca/PublicArtRegistry/ArtistDetail.aspx?FromArtistIndex=False&ArtistId=343', NULL, NULL),
@@ -1349,7 +1349,7 @@ INSERT INTO `artists` (`artistID`, `firstName`, `lastName`, `websiteURL`, `biogr
 (489, 'Colin', 'Moore', NULL, NULL, 'https://covapp.vancouver.ca/PublicArtRegistry/ArtistDetail.aspx?FromArtistIndex=False&ArtistId=504', NULL, 2),
 (490, 'Tierney', 'Milne', NULL, NULL, 'https://covapp.vancouver.ca/PublicArtRegistry/ArtistDetail.aspx?FromArtistIndex=False&ArtistId=505', NULL, NULL),
 (491, 'James', 'Whitman', 'http://www.lionspile.ca/whitman/', 'James Whitman (b. 1976) lives and works in Vancouver, B.C. Canada. He mostly makes drawings and sometimes other things. Over the years he\'s worked with such famous collaborators as 536, Patrick Chan, Jo Cook, Owen Plummer, The Cartoon Wars, Kiku-Haux, and the Lions. In the past year he\'s spent three months at the *Blumen* artist residency in Leipzig, Germany, completed a series of lino-cut prints for \'Lubok 3\', edited by Christoph Ruckhaberle, and published a new zine of his work, \'Some Kings\' with Cederteg Publishing of Stockholm. He has exhibited in artist-run centres and galleries throughout Canada and abroad. Art works outside Vancouver:', 'https://covapp.vancouver.ca/PublicArtRegistry/ArtistDetail.aspx?FromArtistIndex=False&ArtistId=506', NULL, 2),
-(492, 'Donna', 'Szoke', 'http://www.donnaszoke.com', 'Donna Szoke is a Canadian artist whose practice includes video, animation, writing, installation, and collaboration. Her work has been exhibited in Canada, US, France, Germany, and Turkey. She has received numerous research awards and grants for her research from funders including SSHRC, Canada Council Media Arts Commissions, BC Arts Council Media Arts, and Ontario Arts Council. She holds a BA, BFA, Sculpture Diploma (Foundry) and an Interdisciplinary MFA.	Szoke’s art practice began in Winnipeg MB, designing for Guy Maddin’s early feature films, engaging in performance art and making conceptually based drawings. After moving to Vancouver, her practice shifted into digital video, collaboration and installation. She creates post-conceptual work that is heavily informed by critical studies with repeating themes of immanence, embodied perception, the fluidity of lived experience and a critique of commodity culture.Art works outside Vancouver: Video Public Art (Temporary): Toronto, ON; St. Catharines, ON', 'https://covapp.vancouver.ca/PublicArtRegistry/ArtistDetail.aspx?FromArtistIndex=False&ArtistId=507', NULL, 2),
+(492, 'Donna', 'Szoke', 'http://www.donnaszoke.com', 'Donna Szoke is a Canadian artist whose practice includes video, animation, writing, installation, and collaboration. Her work has been exhibited in Canada, US, France, Germany, and Turkey. She has received numerous research awards and grants for her research from funders including SSHRC, Canada Council Media Arts Commissions, BC Arts Council Media Arts, and Ontario Arts Council. She holds a BA, BFA, Sculpture Diploma (Foundry) and an Interdisciplinary MFA.  Szoke’s art practice began in Winnipeg MB, designing for Guy Maddin’s early feature films, engaging in performance art and making conceptually based drawings. After moving to Vancouver, her practice shifted into digital video, collaboration and installation. She creates post-conceptual work that is heavily informed by critical studies with repeating themes of immanence, embodied perception, the fluidity of lived experience and a critique of commodity culture.Art works outside Vancouver: Video Public Art (Temporary): Toronto, ON; St. Catharines, ON', 'https://covapp.vancouver.ca/PublicArtRegistry/ArtistDetail.aspx?FromArtistIndex=False&ArtistId=507', NULL, 2),
 (493, 'Rhonda', 'Weppler', 'http://www.rweppler.com', 'Rhonda Weppler\'s public works, usually temporary and realized as forms of signage, use colour coding and graphic embellishment to emphasize their decorative aspects. Exhibits include: National Gallery of Canada (Ottawa); Vancouver Art Gallery; Art Gallery of Alberta (Edmonton); Contemporary Art Gallery (Vancouver); LaBoral (Gijon); Dos de Mayo (Madrid). Weppler\'s work is represented in public collections including the Musee d\'art Contemporain de Montreal and the National Gallery of Canada.', 'https://covapp.vancouver.ca/PublicArtRegistry/ArtistDetail.aspx?FromArtistIndex=False&ArtistId=508', NULL, 1),
 (494, 'Gabrielle', 'Hill', NULL, 'Gabrielle Hill is a Metis artist who works in drawing, sculpture, and public installation. Gabrielle\'s work has been exhibited at Gallery Gachet, Grunt Gallery, and Red Gate in Vancouver, and her drawings have also shown at Get This! Gallery in Atlanta, Georgia. Gabrielle holds a degree with honors in English from Simon Fraser University.', 'https://covapp.vancouver.ca/PublicArtRegistry/ArtistDetail.aspx?FromArtistIndex=False&ArtistId=509', NULL, 2),
 (495, 'Urs-P', 'Twellmann', NULL, NULL, 'https://covapp.vancouver.ca/PublicArtRegistry/ArtistDetail.aspx?FromArtistIndex=False&ArtistId=510', NULL, 19),
@@ -2151,13 +2151,14 @@ CREATE TABLE `favoriteArtists` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `haveSeen`
+-- Table structure for table `marks`
 --
 
-DROP TABLE IF EXISTS `haveSeen`;
-CREATE TABLE `haveSeen` (
+DROP TABLE IF EXISTS `marks`;
+CREATE TABLE `marks` (
   `memberID` int(11) NOT NULL,
-  `artworkID` int(11) NOT NULL
+  `artworkID` int(11) NOT NULL,
+  `status` enum('To See','Seen') NOT NULL DEFAULT 'To See'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -2220,14 +2221,74 @@ INSERT INTO `neighborhoods` (`neighborhoodID`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `toSee`
+-- Table structure for table `owners`
 --
 
-DROP TABLE IF EXISTS `toSee`;
-CREATE TABLE `toSee` (
-  `memberID` int(11) NOT NULL,
-  `artworkID` int(11) NOT NULL
+DROP TABLE IF EXISTS `owners`;
+CREATE TABLE `owners` (
+  `ownerID` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `owners`
+--
+
+INSERT INTO `owners` (`ownerID`, `name`) VALUES
+(24, 'ASPAC Developments'),
+(33, 'BC Housing'),
+(28, 'BC Pavco'),
+(13, 'BC Sports Hall of Fame & Museum'),
+(29, 'Bob Rennie'),
+(42, 'Bosa'),
+(3, 'Cadillac Fairview'),
+(35, 'Canadian Imperial Bank of Commerce'),
+(26, 'Canadian Tire'),
+(52, 'Children\'s & Women\'s Health Centre of BC'),
+(38, 'Citizens of British Columbia via PAVCO'),
+(1, 'City of Vancouver'),
+(40, 'Cressey'),
+(20, 'Farm Folk/City Folk'),
+(5, 'Government of Canada'),
+(23, 'Guangdong Province, China'),
+(36, 'GVRD (Metro Vancouver)'),
+(21, 'L\'Ecole Bilingue'),
+(15, 'Lookout Emergency Aid Society'),
+(19, 'Mid-Main Community Health Centre'),
+(51, 'Mosaic Homes'),
+(53, 'New Edgewater Development ULC'),
+(16, 'Other'),
+(12, 'Pacific City Land Corporation'),
+(49, 'PAL Vancouver'),
+(37, 'Pavco'),
+(48, 'Pinnacle International (West First) Plaza Inc.'),
+(31, 'Polaris Realty / Harbour Centre'),
+(2, 'Private'),
+(4, 'Privately Owned'),
+(30, 'Project Rainbow'),
+(6, 'Province of British Columbia'),
+(22, 'Public Works Canada'),
+(18, 'Queen Victoria School'),
+(17, 'Reach Community Health Centre; Britannia Community'),
+(44, 'Squamish Nation'),
+(32, 'St James Community Services Society/BC Housing'),
+(43, 'Strata Corporation of 2699 Kingsway'),
+(39, 'Three Harbour Green Strata Corporation'),
+(47, 'Translink'),
+(8, 'UBC'),
+(9, 'University'),
+(10, 'University of British Columbia'),
+(7, 'Unknown'),
+(14, 'Vancouver Art Gallery'),
+(25, 'Vancouver General Hospital'),
+(54, 'Vancouver Heritage Foundation'),
+(11, 'Vancouver School Board'),
+(46, 'VanDusen Botanical Garden Association (VBGA)'),
+(45, 'VanDusen Botanical Garden Associaton (VBGA)'),
+(27, 'VCC'),
+(41, 'Westbank'),
+(50, 'Westbank Corp (601 Main Partnership)'),
+(34, 'Yang-Myung Holdings Ld');
 
 -- --------------------------------------------------------
 
@@ -2305,11 +2366,11 @@ ALTER TABLE `favoriteArtists`
   ADD KEY `favoriteArtists_artist` (`artistID`);
 
 --
--- Indexes for table `haveSeen`
+-- Indexes for table `marks`
 --
-ALTER TABLE `haveSeen`
+ALTER TABLE `marks`
   ADD UNIQUE KEY `composite` (`memberID`,`artworkID`),
-  ADD KEY `haveSeen_artwork` (`artworkID`);
+  ADD KEY `toSee_artwork` (`artworkID`);
 
 --
 -- Indexes for table `members`
@@ -2326,11 +2387,11 @@ ALTER TABLE `neighborhoods`
   ADD UNIQUE KEY `name` (`name`);
 
 --
--- Indexes for table `toSee`
+-- Indexes for table `owners`
 --
-ALTER TABLE `toSee`
-  ADD UNIQUE KEY `composite` (`memberID`,`artworkID`),
-  ADD KEY `toSee_artwork` (`artworkID`);
+ALTER TABLE `owners`
+  ADD PRIMARY KEY (`ownerID`),
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `types`
@@ -2365,13 +2426,19 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `memberID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `memberID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `neighborhoods`
 --
 ALTER TABLE `neighborhoods`
   MODIFY `neighborhoodID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `owners`
+--
+ALTER TABLE `owners`
+  MODIFY `ownerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `types`
@@ -2412,16 +2479,9 @@ ALTER TABLE `favoriteArtists`
   ADD CONSTRAINT `favoriteArtists_member` FOREIGN KEY (`memberID`) REFERENCES `members` (`memberID`);
 
 --
--- Constraints for table `haveSeen`
+-- Constraints for table `marks`
 --
-ALTER TABLE `haveSeen`
-  ADD CONSTRAINT `haveSeen_artwork` FOREIGN KEY (`artworkID`) REFERENCES `artworks` (`artworkID`),
-  ADD CONSTRAINT `haveSeen_member` FOREIGN KEY (`memberID`) REFERENCES `members` (`memberID`);
-
---
--- Constraints for table `toSee`
---
-ALTER TABLE `toSee`
+ALTER TABLE `marks`
   ADD CONSTRAINT `toSee_artwork` FOREIGN KEY (`artworkID`) REFERENCES `artworks` (`artworkID`),
   ADD CONSTRAINT `toSee_member` FOREIGN KEY (`memberID`) REFERENCES `members` (`memberID`);
 SET FOREIGN_KEY_CHECKS=1;

@@ -11,7 +11,7 @@ $page_title = 'Dashboard' . get_site_title_suffix();
 require('../private/header.php');
 ?>
 
-<section class="l-section l-wrap">
+<section class="l-section l-wrap l-wrap--md">
   <?php include_once('../private/notice.php'); ?>
   <?php if (!is_logged_in()): // Show visitor page ?>
   <h1 class="visually-hidden">
@@ -33,7 +33,7 @@ require('../private/header.php');
   <h2>
     Recently Installed
   </h2>
-  <?php include('../private/list-recent-artworks.php'); ?>
+  <?php show_recent_artworks(); ?>
   <?php else: ?>
   <h1>
     Dashboard
@@ -56,7 +56,7 @@ require('../private/header.php');
   <h2>
     Artworks Already Seen
   </h2>
-  <?php show_marked_artworks('Have Seen'); ?>
+  <?php show_marked_artworks('Seen'); ?>
   <?php endif; ?>
 </section>
 

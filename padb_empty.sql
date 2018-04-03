@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 27, 2018 at 10:45 PM
+-- Generation Time: Apr 03, 2018 at 10:30 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -108,13 +108,14 @@ CREATE TABLE `favoriteArtists` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `haveSeen`
+-- Table structure for table `marks`
 --
 
-DROP TABLE IF EXISTS `haveSeen`;
-CREATE TABLE `haveSeen` (
+DROP TABLE IF EXISTS `marks`;
+CREATE TABLE `marks` (
   `memberID` int(11) NOT NULL,
-  `artworkID` int(11) NOT NULL
+  `artworkID` int(11) NOT NULL,
+  `status` enum('To See','Seen') NOT NULL DEFAULT 'To See'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -146,13 +147,13 @@ CREATE TABLE `neighborhoods` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `toSee`
+-- Table structure for table `owners`
 --
 
-DROP TABLE IF EXISTS `toSee`;
-CREATE TABLE `toSee` (
-  `memberID` int(11) NOT NULL,
-  `artworkID` int(11) NOT NULL
+DROP TABLE IF EXISTS `owners`;
+CREATE TABLE `owners` (
+  `ownerID` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -209,11 +210,11 @@ ALTER TABLE `favoriteArtists`
   ADD KEY `favoriteArtists_artist` (`artistID`);
 
 --
--- Indexes for table `haveSeen`
+-- Indexes for table `marks`
 --
-ALTER TABLE `haveSeen`
+ALTER TABLE `marks`
   ADD UNIQUE KEY `composite` (`memberID`,`artworkID`),
-  ADD KEY `haveSeen_artwork` (`artworkID`);
+  ADD KEY `toSee_artwork` (`artworkID`);
 
 --
 -- Indexes for table `members`
@@ -230,11 +231,11 @@ ALTER TABLE `neighborhoods`
   ADD UNIQUE KEY `name` (`name`);
 
 --
--- Indexes for table `toSee`
+-- Indexes for table `owners`
 --
-ALTER TABLE `toSee`
-  ADD UNIQUE KEY `composite` (`memberID`,`artworkID`),
-  ADD KEY `toSee_artwork` (`artworkID`);
+ALTER TABLE `owners`
+  ADD PRIMARY KEY (`ownerID`),
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `types`
@@ -251,37 +252,43 @@ ALTER TABLE `types`
 -- AUTO_INCREMENT for table `artists`
 --
 ALTER TABLE `artists`
-  MODIFY `artistID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `artistID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=562;
 
 --
 -- AUTO_INCREMENT for table `artworks`
 --
 ALTER TABLE `artworks`
-  MODIFY `artworkID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `artworkID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=635;
 
 --
 -- AUTO_INCREMENT for table `countries`
 --
 ALTER TABLE `countries`
-  MODIFY `countryID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `countryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `memberID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `memberID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `neighborhoods`
 --
 ALTER TABLE `neighborhoods`
-  MODIFY `neighborhoodID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `neighborhoodID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `owners`
+--
+ALTER TABLE `owners`
+  MODIFY `ownerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `types`
 --
 ALTER TABLE `types`
-  MODIFY `typeID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `typeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
@@ -316,16 +323,9 @@ ALTER TABLE `favoriteArtists`
   ADD CONSTRAINT `favoriteArtists_member` FOREIGN KEY (`memberID`) REFERENCES `members` (`memberID`);
 
 --
--- Constraints for table `haveSeen`
+-- Constraints for table `marks`
 --
-ALTER TABLE `haveSeen`
-  ADD CONSTRAINT `haveSeen_artwork` FOREIGN KEY (`artworkID`) REFERENCES `artworks` (`artworkID`),
-  ADD CONSTRAINT `haveSeen_member` FOREIGN KEY (`memberID`) REFERENCES `members` (`memberID`);
-
---
--- Constraints for table `toSee`
---
-ALTER TABLE `toSee`
+ALTER TABLE `marks`
   ADD CONSTRAINT `toSee_artwork` FOREIGN KEY (`artworkID`) REFERENCES `artworks` (`artworkID`),
   ADD CONSTRAINT `toSee_member` FOREIGN KEY (`memberID`) REFERENCES `members` (`memberID`);
 SET FOREIGN_KEY_CHECKS=1;

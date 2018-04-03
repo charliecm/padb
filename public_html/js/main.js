@@ -57,12 +57,12 @@ $(function() {
     );
   });
 
-  // Unmark or mark artwork as to see or have seen
+  // Unmark or mark artwork as to see or seen
   $('.action-mark-artwork').on('click', function(event) {
     event.preventDefault();
     var $btn = $(this);
     var artworkID = parseInt(this.dataset.artworkId, 10);
-    var status = this.dataset.status === 'To See' ? 'To See' : 'Have Seen';
+    var status = this.dataset.status === 'To See' ? 'To See' : 'Seen';
     var isActive = $btn.hasClass('-active');
     $.post('api/mark-artwork.php',
       {

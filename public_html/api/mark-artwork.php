@@ -38,7 +38,7 @@ if (!isset($_POST['artworkID']) || !isset($_POST['status'])) {
 $member_id = $_SESSION['user_id'];
 $artwork_id = intval($_POST['artworkID']);
 $status = $_POST['status'] === 'To See' ? 'To See' :
-  ($_POST['status'] === 'Have Seen' ? 'Have Seen' : NULL);
+  ($_POST['status'] === 'Seen' ? 'Seen' : NULL);
 
 ob_start();
 $db = db_connect();
