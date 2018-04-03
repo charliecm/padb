@@ -103,8 +103,7 @@ require('../private/header.php');
     $filter_desc = '';
     if ($search_type_id) {
       // Filter by type
-      $query .= (empty($types)) ? ' WHERE ' : ' AND ';
-      $query .= "typeID = ?";
+      $query .= " WHERE typeID = ?";
       $types .= 'i';
       $params[] = &$search_type_id;
       $filter_desc = " $search_type_name";
@@ -129,7 +128,8 @@ require('../private/header.php');
     }
     if ($search_query) {
       // Search by name
-      $query .= " WHERE (title LIKE ?)";
+      $query .= (empty($types)) ? ' WHERE ' : ' AND ';
+      $query .= " title LIKE ?";
       $types .= 's';
       $match = '%' . $search_query . '%';
       $params[] = &$match;
