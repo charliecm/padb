@@ -60,6 +60,14 @@
   }
 }
 
+.btn--favorite {
+  &:not([disabled]) {
+    &.-active {
+      background-color: $color-success;
+    }
+  }
+}
+
 .btn--small {
   padding: rem(7px) .75rem rem(5px);
 }

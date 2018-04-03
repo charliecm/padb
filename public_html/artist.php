@@ -52,10 +52,16 @@ require('../private/header.php');
     From <a href="artists.php?country=<?php echo $country_id; ?>"><?php echo $country; ?></a>
   </p>
   <?php endif; ?>
-  <?php if (is_logged_in()): ?>
+  <?php
+    if (is_logged_in()):
+      $member_id = $_SESSION['user_id'];
+      $res = $db->query("SELECT * FROM favoriteArtists WHERE memberID = $member_id AND artistID = $id LIMIT 1");
+      $is_fav = $res->num_rows > 0;
+      $btn_text = $is_fav ? 'Favourited' : 'Add to Favourite';
+  ?>
   <p class="text-center">
-    <a href="" class="btn btn--small">
-      Add to Favourite
+    <a href="#" data-id="<?php echo $id; ?>" class="action-add-to-fav btn btn--small btn--favorite<?php if ($is_fav) echo ' -active'; ?>">
+      <?php echo $btn_text; ?>
     </a>
   </p>
   <?php endif; ?>
