@@ -15,7 +15,7 @@
   background-color: $color-gray-4;
   background-repeat: no-repeat;
   background-size: cover;
-  max-width: rem(200px);
+  max-width: rem(160px);
 
   &::after {
     display: block;
@@ -34,7 +34,7 @@
 
   &::after {
     display: block;
-    padding-top: 75%;
+    padding-top: 66.6666%;
     content: '';
   }
 }

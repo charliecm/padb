@@ -19,7 +19,7 @@ if (is_numeric($id)) {
   $name = get_artist_name($artist['firstName'], $artist['lastName']);
   $website_url = get_sanitized_text($artist['websiteURL'] ?? $artist['biographyURL']);
   $biography = get_sanitized_text($artist['biography']);
-  $photo_url = get_sanitized_text($artist['photoURL']);
+  $photo_url = get_artist_photo($artist['photoURL']);
   $country_id = intval($artist['countryID']);
   $country = get_sanitized_text($artist['country']);
   $page_title = $name . get_site_title_suffix();

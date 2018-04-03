@@ -179,6 +179,50 @@ function get_artwork_type_plural($type) {
   return $type;
 }
 
+/**
+ * Checks if URL is an external link.
+ * https://stackoverflow.com/a/22964930
+ * @param string $url URL to test.
+ * @return boolean TRUE if URL is external.
+ */
+function is_url_external($url) {
+  $components = parse_url($url);
+  return !empty($components['host']) && strcasecmp($components['host'], 'example.com');
+}
+
+/**
+ * Returns URL of cached image.
+ * TODO: Cache invalidation.
+ * @param string $url URL of source image.
+ * @return string URL of locally cached image.
+ */
+function get_image_cache($url) {
+  if (!is_url_external($url)) return $url;
+  // $ext = image_type_to_extension(exif_imagetype($url));
+  $local = 'images/cache/' . md5($url); // . $ext;
+  if (file_exists($local)) return $local;
+  if (copy($url, $local)) return $local;
+  return NULL;
+}
+
+/**
+ * Returns artwork photo.
+ * @param string $url Artwork photo URL.
+ * @return string Sanitized artwork photo or placeholder URL.
+ */
+function get_artwork_photo($url) {
+  return get_sanitized_text(get_image_cache($url) ?? 'images/artwork.png');
+}
+
+/**
+ * Returns artist photo.
+ * @param string $url Artist photo URL.
+ * @return string Sanitized artist photo or placeholder URL.
+ */
+function get_artist_photo($url) {
+  return get_sanitized_text(get_image_cache($url) ?? 'images/artist.png');
+}
+
 // Include other functions
 require_once('functions.pagination.php');
 ?>

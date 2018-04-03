@@ -127,7 +127,7 @@ require('../private/header.php');
         $artist_id = $artist['artistID'];
         $name = get_artist_name($artist['firstName'], $artist['lastName']);
         $artist_url = "artist.php?id=$artist_id";
-        $photo_url = 'images/empty.php'; // TODO: $artist['photoURL'] ?? 'images/empty.png';
+        $photo_url = get_artist_photo($artist['photoURL']);
         $country = get_sanitized_text($artist['country']);
         $artworks = $artist['artworks'];
     ?>

@@ -31,7 +31,7 @@ if (is_numeric($id)) {
   $material = get_sanitized_text($artwork['material']);
   $description = get_sanitized_text($artwork['description']);
   $artist_statement = get_sanitized_text($artwork['statement']);
-  $photo_url = get_sanitized_text($artwork['photoURL']);
+  $photo_url = get_artwork_photo($artwork['photoURL']);
   $latitude = get_sanitized_text($artwork['latitude']);
   $longitude = get_sanitized_text($artwork['longitude']);
   $site_name = get_sanitized_text($artwork['siteName']);

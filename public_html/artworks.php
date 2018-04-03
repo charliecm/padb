@@ -196,7 +196,7 @@ require('../private/header.php');
         $url = "artwork.php?id=$artwork_id";
         $title = htmlspecialchars(get_sanitized_text($artwork['title']));
         $year_installed = date('Y', strtotime($artwork['yearInstalled']));
-        $photo_url = 'images/empty.png'; // TODO: $artwork['photoURL'];
+        $photo_url = get_artwork_photo($artwork['photoURL']);
     ?>
     <li class="list__item">
       <a href="<?php echo $url; ?>" class="list__thumbnail" style="background-image:url('<?php echo $photo_url; ?>')"></a>
