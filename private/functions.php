@@ -16,8 +16,8 @@ function get_site_title_suffix() {
  * @return mysqli
  */
 function db_connect() {
-  require('config.php');
-  $db = @mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+  require_once('config.php');
+  $db = @mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
   if ($errno = $db->connect_errno) {
     die("<p>There was a problem connecting to the database: $errno</p>");
   }

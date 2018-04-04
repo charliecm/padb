@@ -1,12 +1,15 @@
 <?php
 /**
- * Database Crediential
+ * Configuration
  */
 
-$dbhost = 'localhost';
-$dbuser = 'root';
-$dbpass = '';
-$dbname = 'padb';
+// Database
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'padb');
 
-$google_static_map_api_key = '';
+// API keys
+define('GOOGLE_STATIC_MAP_API_KEY', '');
+define('GOOGLE_MAP_API_KEY', '');
 ?>

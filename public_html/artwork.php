@@ -4,7 +4,6 @@
  */
 
 require('../private/functions.php');
-require('../private/config.php');
 
 ensure_http();
 
@@ -95,7 +94,7 @@ require('../private/header.php');
       </p>
       <?php if (isset($lat_lng)): ?>
       <a href="https://www.google.com/maps/?q=<?php echo $lat_lng; ?>" target="_blank">
-        <img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php echo $lat_lng; ?>&zoom=13&size=302x200&maptype=roadmap&scale=2&markers=color:red%7C<?php echo $lat_lng; ?>&key=<?php echo $google_static_map_api_key; ?>" class="listing__map">
+        <img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php echo $lat_lng; ?>&zoom=13&size=302x200&maptype=roadmap&scale=2&markers=color:red%7C<?php echo $lat_lng; ?>&key=<?php echo GOOGLE_STATIC_MAP_API_KEY; ?>" class="listing__map">
       </a>
       <?php endif; ?>
       <p>
