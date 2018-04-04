@@ -18,7 +18,7 @@ function show_recent_artworks() {
     while ($artwork = $res1->fetch_assoc()):
       $artwork_id = intval($artwork['artworkID']);
       $url = 'artwork.php?id=' . $artwork['artworkID'];
-      $title = htmlspecialchars(get_sanitized_text($artwork['title']));
+      $title = get_sanitized_text($artwork['title']);
       $year_installed = date('Y', strtotime($artwork['yearInstalled']));
       $photo_url = get_artwork_photo($artwork['photoURL']);
   ?>

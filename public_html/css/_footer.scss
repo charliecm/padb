@@ -8,3 +8,10 @@
   padding-bottom: rem($drop-margin * 2);
   text-align: center;
 }
+
+.footer--condensed {
+  @include bp-gt($bp-lg) {
+    padding-top: rem($drop-margin / 2);
+    padding-bottom: rem($drop-margin / 2);
+  }
+}

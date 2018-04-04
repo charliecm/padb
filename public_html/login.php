@@ -60,46 +60,53 @@ if (isset($_POST['user']) || isset($_POST['pass'])) {
 require('../private/header.php');
 ?>
 
-<section class="l-section l-wrap l-wrap--sm">
-  <?php if (isset($_GET['redirect'])): ?>
-  <p class="notice">
-    Please log into your account first.
-  </p>
-  <?php endif; ?>
-  <?php show_global_notices(); ?>
-  <h2>
-    Login
-  </h2>
-  <?php if ($login_failed): ?>
-  <p class="text-error">
-    Invalid email or password. Please try again!
-  </p>
-  <?php endif;?>
-  <form method="post" class="form--small drop">
-    <div class="form-field drop-sm">
-      <label class="form-label">
-        Email
-      </label>
-      <div class="fill-width">
-        <input type="text" name="user" required class="fill-width<?php form_highlight_error($inputs, 'user'); ?>"<?php form_fill_input($inputs, 'user', 'text'); ?>>
-        <?php form_display_error($inputs, 'user'); ?>
-      </div>
-    </div>
-    <div class="form-field drop">
-      <label class="form-label">
-        Password
-      </label>
-      <div class="fill-width">
-        <input type="password" name="pass" required class="fill-width<?php form_highlight_error($inputs, 'pass'); ?>"<?php form_fill_input($inputs, 'pass', 'text'); ?>>
-        <?php form_display_error($inputs, 'pass'); ?>
-      </div>
-    </div>
-    <input type="submit" value="Login" class="btn">
-  </form>
-  <p>
-    Not registered yet?
-    <a href="register.php">Sign up</a>.
-  </p>
-</section>
+<main class="l-wrap-all">
+  <div class="l-wrap-content">
+    <?php include('../private/page-header.php'); ?>
 
+    <section class="l-section l-wrap l-wrap--sm">
+      <?php if (isset($_GET['redirect'])): ?>
+      <p class="notice">
+        Please log into your account first.
+      </p>
+      <?php endif; ?>
+      <?php show_global_notices(); ?>
+      <h2>
+        Login
+      </h2>
+      <?php if ($login_failed): ?>
+      <p class="text-error">
+        Invalid email or password. Please try again!
+      </p>
+      <?php endif;?>
+      <form method="post" class="form--small drop">
+        <div class="form-field drop-sm">
+          <label class="form-label">
+            Email
+          </label>
+          <div class="fill-width">
+            <input type="text" name="user" required class="fill-width<?php form_highlight_error($inputs, 'user'); ?>"<?php form_fill_input($inputs, 'user', 'text'); ?>>
+            <?php form_display_error($inputs, 'user'); ?>
+          </div>
+        </div>
+        <div class="form-field drop">
+          <label class="form-label">
+            Password
+          </label>
+          <div class="fill-width">
+            <input type="password" name="pass" required class="fill-width<?php form_highlight_error($inputs, 'pass'); ?>"<?php form_fill_input($inputs, 'pass', 'text'); ?>>
+            <?php form_display_error($inputs, 'pass'); ?>
+          </div>
+        </div>
+        <input type="submit" value="Login" class="btn">
+      </form>
+      <p>
+        Not registered yet?
+        <a href="register.php">Sign up</a>.
+      </p>
+    </section>
+
+  </div>
+  <?php include('../private/page-footer.php'); ?>
+</main>
 <?php require('../private/footer.php'); ?>

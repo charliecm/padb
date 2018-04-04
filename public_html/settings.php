@@ -109,61 +109,68 @@ if (isset($_POST['pass']) || isset($_POST['npass1']) || isset($_POST['npass2']))
 require('../private/header.php');
 ?>
 
-<section class="l-section l-wrap">
-  <?php show_global_notices(); ?>
-  <h1>
-    Settings
-  </h1>
-  <h2 id="change-name">
-    Change Name
-  </h2>
-  <?php if (!empty($change_name_msg)) show_notice($change_name_msg); ?>
-  <form method="post" action="#change-name" class="form--small drop-lg">
-    <div class="form-field drop-sm">
-      <label class="form-label">
-        Name
-      </label>
-      <div class="fill-width">
-        <input type="text" name="name" required class="fill-width<?php form_highlight_error($inputs, 'name'); ?>"<?php form_fill_input($inputs, 'name', 'text'); ?>>
-        <?php form_display_error($inputs, 'name'); ?>
-      </div>
-    </div>
-    <input type="submit" value="Change Name" class="btn">
-  </form>
-  <h2 id="change-password">
-    Change Password
-  </h2>
-  <?php if (!empty($change_password_msg)) show_notice($change_password_msg); ?>
-  <form method="post" action="#change-password" class="form--small drop-lg">
-    <div class="form-field drop-sm">
-      <label class="form-label">
-        Current password
-      </label>
-      <div class="fill-width">
-        <input type="password" name="pass" required class="fill-width<?php form_highlight_error($inputs, 'pass'); ?>"<?php form_fill_input($inputs, 'pass', 'text'); ?>>
-        <?php form_display_error($inputs, 'pass'); ?>
-      </div>
-    </div>
-    <div class="form-field drop-sm">
-      <label class="form-label">
-        New password
-      </label>
-      <div class="fill-width">
-        <input type="password" name="npass1" required class="fill-width<?php form_highlight_error($inputs, 'npass1'); ?>"<?php form_fill_input($inputs, 'npass1', 'text'); ?>>
-        <?php form_display_error($inputs, 'npass1'); ?>
-      </div>
-    </div>
-    <div class="form-field drop-sm">
-      <label class="form-label">
-        Confirm password
-      </label>
-      <div class="fill-width">
-        <input type="password" name="npass2" required class="fill-width<?php form_highlight_error($inputs, 'npass2'); ?>"<?php form_fill_input($inputs, 'npass2', 'text'); ?>>
-        <?php form_display_error($inputs, 'npass2'); ?>
-      </div>
-    </div>
-    <input type="submit" value="Change Password" class="btn">
-  </form>
-</section>
+<main class="l-wrap-all">
+  <div class="l-wrap-content">
+    <?php include('../private/page-header.php'); ?>
 
+    <section class="l-section l-wrap l-wrap--sm">
+      <?php show_global_notices(); ?>
+      <h1>
+        Settings
+      </h1>
+      <h2 id="change-name">
+        Change Name
+      </h2>
+      <?php if (!empty($change_name_msg)) show_notice($change_name_msg); ?>
+      <form method="post" action="#change-name" class="form--small drop-lg">
+        <div class="form-field drop-sm">
+          <label class="form-label">
+            Name
+          </label>
+          <div class="fill-width">
+            <input type="text" name="name" required class="fill-width<?php form_highlight_error($inputs, 'name'); ?>"<?php form_fill_input($inputs, 'name', 'text'); ?>>
+            <?php form_display_error($inputs, 'name'); ?>
+          </div>
+        </div>
+        <input type="submit" value="Change Name" class="btn">
+      </form>
+      <h2 id="change-password">
+        Change Password
+      </h2>
+      <?php if (!empty($change_password_msg)) show_notice($change_password_msg); ?>
+      <form method="post" action="#change-password" class="form--small drop-lg">
+        <div class="form-field drop-sm">
+          <label class="form-label">
+            Current password
+          </label>
+          <div class="fill-width">
+            <input type="password" name="pass" required class="fill-width<?php form_highlight_error($inputs, 'pass'); ?>"<?php form_fill_input($inputs, 'pass', 'text'); ?>>
+            <?php form_display_error($inputs, 'pass'); ?>
+          </div>
+        </div>
+        <div class="form-field drop-sm">
+          <label class="form-label">
+            New password
+          </label>
+          <div class="fill-width">
+            <input type="password" name="npass1" required class="fill-width<?php form_highlight_error($inputs, 'npass1'); ?>"<?php form_fill_input($inputs, 'npass1', 'text'); ?>>
+            <?php form_display_error($inputs, 'npass1'); ?>
+          </div>
+        </div>
+        <div class="form-field drop-sm">
+          <label class="form-label">
+            Confirm password
+          </label>
+          <div class="fill-width">
+            <input type="password" name="npass2" required class="fill-width<?php form_highlight_error($inputs, 'npass2'); ?>"<?php form_fill_input($inputs, 'npass2', 'text'); ?>>
+            <?php form_display_error($inputs, 'npass2'); ?>
+          </div>
+        </div>
+        <input type="submit" value="Change Password" class="btn">
+      </form>
+    </section>
+
+  </div>
+  <?php include('../private/page-footer.php'); ?>
+</main>
 <?php require('../private/footer.php'); ?>

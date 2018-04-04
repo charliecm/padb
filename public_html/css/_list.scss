@@ -79,6 +79,30 @@
   }
 }
 
+// Map marker letter button
+.list__map-letter {
+  display: none;
+  align-self: center;
+  flex-shrink: 0;
+  border: 2px solid rgba($color-black, .96); // sass-lint:disable-line no-color-literals
+  border-radius: 50%;
+  background-color: #fb7972; // sass-lint:disable-line no-color-literals
+  width: rem(24px);
+  height: rem(24px);
+  text-align: center;
+  line-height: rem(22px);
+  color: inherit;
+
+  &:hover {
+    background-color: darken(#fb7972, 10%); // sass-lint:disable-line no-color-literals
+    color: inherit;
+  }
+
+  @include bp-gt($bp-lg) {
+    display: block;
+  }
+}
+
 .list-sort {
   display: flex;
   flex-direction: column;
@@ -87,4 +111,9 @@
     flex-direction: row;
     justify-content: space-between;
   }
+}
+
+.list-map {
+  width: 100%;
+  height: 100%;
 }

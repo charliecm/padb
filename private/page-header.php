@@ -15,7 +15,7 @@ function flag_active($name) {
     echo ' class="-active"';
 }
 ?>
-<header class="header">
+<header class="header<?php if (isset($is_condensed) && $is_condensed === TRUE) echo ' header--condensed'; ?>">
   <div class="header-wrap l-wrap">
     <a href="index.php" class="header-logo">
       PADb

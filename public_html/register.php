@@ -73,48 +73,55 @@ if (isset($_POST['email']) ||
 require('../private/header.php');
 ?>
 
-<section class="l-section l-wrap l-wrap--sm">
-  <h2>
-    Sign Up
-  </h2>
-  <?php if ($register_failed): // Show error message when account creation failed in the server ?>
-  <p class="text-error">
-    Sorry, there was a problem creating your account. Please try again!
-  </p>
-  <?php endif;?>
-  <form method="post" class="form--small drop">
-    <div class="form-field drop-sm">
-      <label class="form-label form-label--required">
-        Name
-      </label>
-      <div class="fill-width">
-        <input type="text" name="name" required class="fill-width<?php form_highlight_error($inputs, 'name'); ?>"<?php form_fill_input($inputs, 'name', 'text'); ?>>
-        <?php form_display_error($inputs, 'name'); ?>
-      </div>
-    </div>
-    <div class="form-field drop-sm">
-      <label class="form-label form-label--required">
-        Email
-      </label>
-      <div class="fill-width">
-        <input type="email" name="email" required class="fill-width<?php form_highlight_error($inputs, 'email'); ?>"<?php form_fill_input($inputs, 'email', 'text'); ?>>
-        <?php form_display_error($inputs, 'email'); ?>
-      </div>
-    </div>
-    <div class="form-field drop">
-      <label class="form-label form-label--required">
-        Password
-      </label>
-      <div class="fill-width">
-        <input type="password" name="password" required class="fill-width<?php form_highlight_error($inputs, 'password'); ?>"<?php form_fill_input($inputs, 'password', 'text'); ?>>
-        <?php form_display_error($inputs, 'password'); ?>
-      </div>
-    </div>
-    <input type="submit" value="Sign Up" class="btn">
-  </form>
-  <p>
-    Already registered? <a href="login.php">Login</a>.
-  </p>
-</section>
+<main class="l-wrap-all">
+  <div class="l-wrap-content">
+    <?php include('../private/page-header.php'); ?>
 
+    <section class="l-section l-wrap l-wrap--sm">
+      <h2>
+        Sign Up
+      </h2>
+      <?php if ($register_failed): // Show error message when account creation failed in the server ?>
+      <p class="text-error">
+        Sorry, there was a problem creating your account. Please try again!
+      </p>
+      <?php endif;?>
+      <form method="post" class="form--small drop">
+        <div class="form-field drop-sm">
+          <label class="form-label form-label--required">
+            Name
+          </label>
+          <div class="fill-width">
+            <input type="text" name="name" required class="fill-width<?php form_highlight_error($inputs, 'name'); ?>"<?php form_fill_input($inputs, 'name', 'text'); ?>>
+            <?php form_display_error($inputs, 'name'); ?>
+          </div>
+        </div>
+        <div class="form-field drop-sm">
+          <label class="form-label form-label--required">
+            Email
+          </label>
+          <div class="fill-width">
+            <input type="email" name="email" required class="fill-width<?php form_highlight_error($inputs, 'email'); ?>"<?php form_fill_input($inputs, 'email', 'text'); ?>>
+            <?php form_display_error($inputs, 'email'); ?>
+          </div>
+        </div>
+        <div class="form-field drop">
+          <label class="form-label form-label--required">
+            Password
+          </label>
+          <div class="fill-width">
+            <input type="password" name="password" required class="fill-width<?php form_highlight_error($inputs, 'password'); ?>"<?php form_fill_input($inputs, 'password', 'text'); ?>>
+            <?php form_display_error($inputs, 'password'); ?>
+          </div>
+        </div>
+        <input type="submit" value="Sign Up" class="btn">
+      </form>
+      <p>
+        Already registered? <a href="login.php">Login</a>.
+      </p>
+    </section>
+
+  </div>
+  <?php include('../private/page-footer.php'); ?>
+</main>
 <?php require('../private/footer.php'); ?>

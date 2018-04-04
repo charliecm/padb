@@ -54,6 +54,7 @@ $bp-desktop: 1024px;
 $bp-sm: em($bp-phone-landscape);
 $bp-md: em($bp-phablet);
 $bp-lg: em($bp-tablet);
+$bp-ws: em($bp-desktop);
 
 // Grid
 $grid-columns: 12;

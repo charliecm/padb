@@ -16,6 +16,12 @@
   @include bp-gt($bp-md) {
     flex-direction: row;
   }
+
+  @include bp-gt($bp-lg) {
+    .header--condensed & {
+      max-width: 100%;
+    }
+  }
 }
 
 .header-logo {
@@ -31,6 +37,13 @@
 
   @include bp-gt($bp-md) {
     padding: rem($drop-margin * 1.5) 0 rem($drop-margin);
+  }
+
+  @include bp-gt($bp-lg) {
+    .header--condensed & {
+      padding-top: rem($drop-margin / 2);
+      padding-bottom: rem($drop-margin / 2);
+    }
   }
 }
 
@@ -70,6 +83,12 @@
       padding: 1rem 0 rem($drop-margin) 1.5rem;
     }
   }
+
+  @include bp-gt($bp-lg) {
+    .header--condensed & a {
+      padding-bottom: rem($drop-margin / 2);
+    }
+  }
 }
 
 .header-nav__home {
@@ -94,5 +113,11 @@
 
   @include bp-gt($bp-md) {
     display: block;
+  }
+
+  @include bp-gt($bp-lg) {
+    .header--condensed & {
+      display: none;
+    }
   }
 }

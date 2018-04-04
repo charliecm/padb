@@ -1,7 +1,7 @@
 /**
  * Main Interactions
  */
-/* global $ */
+/* global $, google */
 
 $(function() {
 
@@ -119,3 +119,57 @@ $(function() {
   });
 
 });
+
+// Initializes map view for artworks page
+function initMap() { // eslint-disable-line
+  var $map = $('#map');
+  if (!$map.length || !window.mapResults) return;
+
+  var MIN_WIDTH = 768;
+  var $window = $(window);
+  var isInit = false;
+
+  function init() {
+    // Setup map
+    var results = window.mapResults;
+    var bounds = new google.maps.LatLngBounds();
+    var infowindow = new google.maps.InfoWindow();
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 4
+    });
+
+    results.forEach(function(item) {
+      // Populate map markers
+      var marker = new google.maps.Marker({
+        position: item,
+        icon: 'http://maps.google.com/mapfiles/marker' + item.letter + '.png',
+        map: map
+      });
+      marker.addListener('click', function() {
+        // Show item details
+        infowindow.setContent('<div class="infowindow"><p class="no-drop"><a href="' + item.url + '"><small><strong>' + item.title + '</strong></small></a></p><img src="' + item.photoURL + '"></div>');
+        infowindow.open(map, marker);
+      });
+      bounds.extend(marker.getPosition());
+    });
+    map.fitBounds(bounds);
+
+    // Add zoom to marker interaction for list item map marker button
+    $('.action-map-center').on('click', function() {
+      var i = this.dataset.index;
+      infowindow.close();
+      map.setCenter(results[i]);
+      map.setZoom(17);
+    });
+  }
+
+  // Load map when window is large enough
+  $window.on('resize', function() {
+    if ($window.width() >= MIN_WIDTH && !isInit) {
+      init();
+      $window.off('resize');
+      isInit = true;
+    }
+  });
+  $window.trigger('resize');
+}

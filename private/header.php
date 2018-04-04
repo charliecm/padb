@@ -8,6 +8,3 @@
   <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-  <main class="l-wrap-all">
-    <div class="l-wrap-content">
-      <?php include('../private/page-header.php'); ?>

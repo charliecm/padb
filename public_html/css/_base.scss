@@ -59,11 +59,28 @@ small {
   font-size: rem(14px);
 }
 
+strong {
+  font-weight: bold;
+}
+
 a {
   text-decoration: none;
   color: $color-anchor;
 
   &:hover {
     color: $color-anchor-hover;
+  }
+}
+
+// Google Map overrides
+.gm-style {
+  .infowindow {
+    max-width: rem(200px);
+
+    img {
+      margin-top: .5rem;
+      max-width: 100%;
+      height: auto;
+    }
   }
 }
