@@ -35,8 +35,11 @@ if (is_numeric($id)) {
   $description = get_sanitized_text($artwork['description']);
   $artist_statement = get_sanitized_text($artwork['statement']);
   $photo_url = get_artwork_photo($artwork['photoURL']);
-  $latitude = get_sanitized_text($artwork['latitude']);
-  $longitude = get_sanitized_text($artwork['longitude']);
+  if ($artwork['latitude'] && $artwork['longitude']) {
+    $latitude = floatval($artwork['latitude']);
+    $longitude = floatval($artwork['longitude']);
+    $lat_lng = $latitude . ',' . $longitude;
+  }
   $site_name = get_sanitized_text($artwork['siteName']);
   $site_address = get_sanitized_text($artwork['siteAddress']);
   $page_title = $title . get_site_title_suffix();
@@ -70,13 +73,13 @@ require('../private/header.php');
           <img src="<?php echo $photo_url; ?>" alt="<?php echo $title; ?>" class="img-responsive">
         </a>
       </p>
-      <div class="listing__map">
-        Map here...
-      </div>
+      <?php if (isset($lat_lng)): ?>
+      <img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php echo $lat_lng; ?>&zoom=13&size=302x200&maptype=roadmap&scale=2&markers=color:red%7C<?php echo $lat_lng; ?>&key=<?php echo $google_static_map_api_key; ?>" class="listing__map">
+      <?php endif; ?>
       <p>
         <?php
           // Show location meta
-          $location = 'Can be found ';
+          $location = ($status === 'In Place') ? 'Can be found ' : 'Used to be ';
           if ($site_name) {
             $location .= "at $site_name";
             if ($site_address)
@@ -98,17 +101,17 @@ require('../private/header.php');
       <?php if (is_logged_in()):
         $user_id = $_SESSION['user_id'];
         $res = $db->query("SELECT status FROM marks WHERE memberID = $user_id AND artworkID = $id LIMIT 1");
-        $status = '';
+        $mark_status = '';
         if ($row = $res->fetch_assoc()) {
-          $status = $row['status'] ?? '';
+          $mark_status = $row['status'] ?? '';
         };
       ?>
       <p class="drop--sm">
         Mark as
-        <a href="#" data-artwork-id="<?php echo $id; ?>" data-status="To See" class="action-mark-artwork btn btn--small<?php if ($status === 'To See') echo ' -active'; ?>">
+        <a href="#" data-artwork-id="<?php echo $id; ?>" data-status="To See" class="action-mark-artwork btn btn--small<?php if ($mark_status === 'To See') echo ' -active'; ?>">
           To See
         </a>
-        <a href="#" data-artwork-id="<?php echo $id; ?>" data-status="Have Seen" class="action-mark-artwork btn btn--small<?php if ($status === 'Have Seen') echo ' -active'; ?>">
+        <a href="#" data-artwork-id="<?php echo $id; ?>" data-status="Have Seen" class="action-mark-artwork btn btn--small<?php if ($mark_status === 'Have Seen') echo ' -active'; ?>">
           Have Seen
         </a>
       </p>

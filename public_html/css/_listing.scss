@@ -25,16 +25,7 @@
 }
 
 .listing__map {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin-bottom: rem($drop-margin / 2);
-  background-color: $color-gray-4;
-  color: $color-gray-1;
-
-  &::after {
-    display: block;
-    padding-top: 66.6666%;
-    content: '';
-  }
+  max-width: 100%;
+  height: auto;
 }
