@@ -46,7 +46,7 @@ require('../private/header.php');
         $db = db_connect();
         $user_id = $_SESSION['user_id'];
         $res = $db->query("SELECT preferences FROM members WHERE memberID = $user_id");
-        $old_prefs = json_decode($res->fetch_assoc()['preferences'] ?? [], true);
+        $old_prefs = json_decode($res->fetch_assoc()['preferences'] ?? '[]', true);
         function is_active($id) {
           global $old_prefs;
           return isset($old_prefs[$id]) && $old_prefs[$id] === TRUE ? TRUE : FALSE;

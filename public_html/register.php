@@ -45,10 +45,11 @@ if (isset($_POST['email']) ||
   if (!$has_errors) {
     // Attempt registration
     $db = db_connect();
-    $query = "INSERT INTO members (email, name, password) VALUES (?, ?, ?)";
+    $query = "INSERT INTO members (email, name, password, preferences) VALUES (?, ?, ?, ?)";
     $stmt = $db->prepare($query);
     $hpass = password_hash($password, PASSWORD_BCRYPT); // Generate hashed password
-    $stmt->bind_param('sss', $email, $name, $hpass);
+    $prefs = json_encode([ 'toSee' => true, 'seen' => true, 'favs' => true, 'recent' => true ]);
+    $stmt->bind_param('ssss', $email, $name, $hpass, $prefs);
     $stmt->execute();
     if ($stmt->affected_rows > 0) {
       // Remember the user
