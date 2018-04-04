@@ -4,7 +4,8 @@
 
 .header {
   position: relative;
-  background-color: $color-gray-4;
+  background-color: $color-bootstrap-blue;
+  color: $color-white;
 }
 
 .header-wrap {
@@ -32,11 +33,12 @@
   font-weight: 600;
 
   &:hover {
-    color: $color-gray-1;
+    opacity: .8;
+    color: inherit;
   }
 
   @include bp-gt($bp-md) {
-    padding: rem($drop-margin * 1.5) 0 rem($drop-margin);
+    padding-top: rem($drop-margin * 1.5);
   }
 
   @include bp-gt($bp-lg) {
@@ -61,14 +63,17 @@
 
   a {
     display: block;
+    opacity: .5;
     padding: .25rem 1rem .25rem 0;
+    color: inherit;
+
+    &:hover {
+      opacity: 1;
+    }
 
     &.-active {
-      color: $color-text;
-
-      &:hover {
-        text-decoration: none;
-      }
+      opacity: 1;
+      color: inherit;
     }
 
     li:last-child & {
@@ -80,13 +85,7 @@
     margin-bottom: 0;
 
     a {
-      padding: 1rem 0 rem($drop-margin) 1.5rem;
-    }
-  }
-
-  @include bp-gt($bp-lg) {
-    .header--condensed & a {
-      padding-bottom: rem($drop-margin / 2);
+      padding: 1rem 0 rem($drop-margin / 2) 1.5rem;
     }
   }
 }
@@ -104,12 +103,13 @@
   position: absolute;
   top: 0;
   right: 0;
+  opacity: .5;
   margin-bottom: 0;
   border-top: 0;
-  padding-top: rem($drop-margin);
+  padding-top: rem($drop-margin * 1.25);
   padding-right: rem($l-wrap-padding);
-  color: $color-gray-1;
-  font-size: rem($type-scale-0);
+  color: inherit;
+  font-size: rem(10px);
 
   @include bp-gt($bp-md) {
     display: block;
@@ -118,8 +118,6 @@
   @include bp-gt($bp-lg) {
     .header--condensed & {
       padding-top: .75rem;
-      font-size: rem(10px);
-      // display: none;
     }
   }
 }

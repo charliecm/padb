@@ -27,7 +27,7 @@ require('../private/header.php');
         Public Art Database (PADb) is your source for public artworks in Vancouver.<br>
         Want to keep track of which public artworks you've seen?
       </p>
-      <p>
+      <p class="drop-lg">
         <a href="register.php" class="btn btn--primary">
           Join Now
         </a><!--
@@ -52,11 +52,11 @@ require('../private/header.php');
           return isset($old_prefs[$id]) && $old_prefs[$id] === TRUE ? TRUE : FALSE;
         }
       ?>
-      <h1>
+      <h1 class="visually-hidden">
         Dashboard
       </h1>
       <p>
-        Public Art Database (PADb) is your source for public artworks in Vancouver.
+        Hello, <?php echo $_SESSION['user_name']; ?>! Public Art Database (PADb) is your source for public artworks in Vancouver. You can review artworks and artists you've found interesting here.
       </p>
       <h2>
         <a href="#" data-id="toSee" class="accordion__header<?php echo is_active('toSee') ? ' -active' : ''; ?>">
