@@ -14,6 +14,10 @@ $db = db_connect();
 
 // Get parameters
 $search_query = $_GET['query'] ?? NULL;
+$search_status = isset($_GET['status']) ? $_GET['status'] : NULL;
+if ($search_status === 'in_place') $search_status = 'In Place';
+else if ($search_status === 'removed') $search_status = 'Removed';
+$search_neighborhood_name = '';
 $search_neighborhood_id = isset($_GET['neighborhood']) ? intval($_GET['neighborhood']) : NULL;
 $search_neighborhood_name = '';
 $search_owner_id = isset($_GET['owner']) ? intval($_GET['owner']) : NULL;
@@ -41,7 +45,25 @@ require('../private/header.php');
       <input type="submit" value="Search" class="btn btn--primary">
     </div>
     <div class="row drop-sm">
-      <div class="col col--4">
+      <div class="col col--6">
+        <div class="form-select fill-width">
+          <select name="status" class="select-filter">
+            <option value="">Filter by status...</option>
+            <?php
+            // Populate status select box
+            $statuses = [
+              'in_place' => 'In Place',
+              'removed' => 'Removed'
+            ];
+            foreach ($statuses as $key => $value):
+              $selected = $search_status === $value;
+            ?>
+            <option value="<?php echo $key; ?>"<?php if ($selected) echo ' selected'; ?>><?php echo $value; ?></option>
+            <?php endforeach; ?>
+          </select>
+        </div>
+      </div>
+      <div class="col col--6">
         <div class="form-select">
           <select name="type" class="select-filter">
             <option value="">Filter by type...</option>
@@ -59,7 +81,9 @@ require('../private/header.php');
           </select>
         </div>
       </div>
-      <div class="col col--4">
+    </div>
+    <div class="row drop-sm">
+      <div class="col col--6">
         <div class="form-select fill-width">
           <select name="neighborhood" class="select-filter">
             <option value="">Filter by neighborhood...</option>
@@ -77,7 +101,7 @@ require('../private/header.php');
           </select>
         </div>
       </div>
-      <div class="col col--4">
+      <div class="col col--6">
         <div class="form-select">
           <select name="owner" class="select-filter">
             <option value="">Filter by owner...</option>
@@ -111,6 +135,14 @@ require('../private/header.php');
       $filter_desc = " $search_type_name";
     } else {
       $filter_desc = ' artworks';
+    }
+    if ($search_status) {
+      // Filter by status
+      $query .= (empty($types)) ? ' WHERE ' : ' AND ';
+      $query .= "status = ?";
+      $types .= 's';
+      $params[] = &$search_status;
+      $filter_desc = ' that are ' . strtolower($search_status);
     }
     if ($search_neighborhood_id) {
       // Filter by neighborhood
@@ -196,6 +228,7 @@ require('../private/header.php');
       while ($artwork = $res1->fetch_assoc()):
         $artwork_id = intval($artwork['artworkID']);
         $url = "artwork.php?id=$artwork_id";
+        $status = $artwork['status'];
         $title = htmlspecialchars(get_sanitized_text($artwork['title']));
         $year_installed = date('Y', strtotime($artwork['yearInstalled']));
         $photo_url = get_artwork_photo($artwork['photoURL']);
@@ -218,7 +251,7 @@ require('../private/header.php');
               $artistID = $artist['artistID'];
               $name = get_artist_name($artist['firstName'], $artist['lastName']);
           ?><?php if ($count++) echo ', '; ?><a href="artist.php?id=<?php echo $artistID; ?>" class="a-lite"><?php echo $name ?></a><?php endwhile; ?>
-          in <?php echo $year_installed; ?>
+          in <?php echo $year_installed; ?><?php echo ($status === 'Removed') ? ' (Removed)' : ''; ?>
         </small>
       </div>
     </li>
