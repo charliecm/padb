@@ -94,7 +94,9 @@ require('../private/header.php');
         </a>
       </p>
       <?php if (isset($lat_lng)): ?>
-      <img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php echo $lat_lng; ?>&zoom=13&size=302x200&maptype=roadmap&scale=2&markers=color:red%7C<?php echo $lat_lng; ?>&key=<?php echo $google_static_map_api_key; ?>" class="listing__map">
+      <a href="https://www.google.com/maps/?q=<?php echo $lat_lng; ?>" target="_blank">
+        <img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php echo $lat_lng; ?>&zoom=13&size=302x200&maptype=roadmap&scale=2&markers=color:red%7C<?php echo $lat_lng; ?>&key=<?php echo $google_static_map_api_key; ?>" class="listing__map">
+      </a>
       <?php endif; ?>
       <p>
         <?php
