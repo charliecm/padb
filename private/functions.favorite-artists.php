@@ -46,7 +46,7 @@ function show_favorite_artists() {
         </small>
       </div>
     </div>
-    <a href="#" data-artist-id="<?php echo $artist_id; ?>" data-artist-name="<?php echo $name; ?>" class="action-unfav-artist btn btn--destructive list__cta">
+    <a href="#" data-artist-id="<?php echo $artist_id; ?>" data-artist-name="<?php echo $name; ?>" class="action-unfav-artist btn btn--destructive btn--small list__cta">
       Remove
     </a>
   </li>

@@ -117,7 +117,9 @@
 
   @include bp-gt($bp-lg) {
     .header--condensed & {
-      display: none;
+      padding-top: .75rem;
+      font-size: rem(10px);
+      // display: none;
     }
   }
 }

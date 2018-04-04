@@ -49,7 +49,7 @@ function show_marked_artworks($status) {
         </small>
       </div>
     </div>
-    <a href="#" data-artwork-id="<?php echo $artwork_id; ?>" data-artwork-title="<?php echo $title; ?>" class="action-unmark-artwork btn btn--destructive list__cta">
+    <a href="#" data-artwork-id="<?php echo $artwork_id; ?>" data-artwork-title="<?php echo $title; ?>" class="action-unmark-artwork btn btn--destructive btn--small list__cta">
       Remove
     </a>
   </li>
