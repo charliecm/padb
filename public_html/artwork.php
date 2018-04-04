@@ -4,9 +4,12 @@
  */
 
 require('../private/functions.php');
+require('../private/config.php');
 
-$db = db_connect();
+ensure_http();
+
 $id = (isset($_GET['id'])) ? intval($_GET['id']) : NULL;
+$db = db_connect();
 
 if (is_numeric($id)) {
   // Get artwork details

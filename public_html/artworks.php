@@ -5,6 +5,8 @@
 
 require('../private/functions.php');
 
+ensure_http();
+
 $page_id = 'artworks';
 $page_title = 'Artworks' . get_site_title_suffix();
 $limit = 10;

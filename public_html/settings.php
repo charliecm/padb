@@ -5,6 +5,8 @@
 
 require('../private/functions.php');
 
+ensure_https();
+
 if (!is_logged_in()) {
   // Redirect if user is not logged in
   header('Location: index.php' );

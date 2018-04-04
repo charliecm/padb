@@ -5,6 +5,8 @@
 
 require('../private/functions.php');
 
+ensure_http();
+
 $page_id = 'home';
 $page_title = 'Dashboard' . get_site_title_suffix();
 

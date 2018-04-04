@@ -16,7 +16,7 @@ function get_site_title_suffix() {
  * @return mysqli
  */
 function db_connect() {
-  require('db-config.php');
+  require('config.php');
   $db = @mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
   if ($errno = $db->connect_errno) {
     die("<p>There was a problem connecting to the database: $errno</p>");
@@ -53,11 +53,21 @@ function is_logged_in() {
 }
 
 /**
- * Redirects to HTTPS if URL not secured.
+ * Redirects to HTTPS if URL is not secured.
  */
 function ensure_https() {
   if ($_SERVER['HTTPS'] !== 'on') {
     header('Location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+    exit;
+  }
+}
+
+/**
+ * Redirects to HTTP if URL is secured.
+ */
+function ensure_http() {
+  if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
     exit;
   }
 }
