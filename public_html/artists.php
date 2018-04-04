@@ -38,7 +38,7 @@ require('../private/header.php');
           <input id="query" type="text" name="query" value="<?php echo get_sanitized_text($search_query); ?>" placeholder="Search artist by name..." class="fill-width form-inline__input">
           <input type="submit" value="Search" class="btn btn--primary">
         </div>
-        <div class="form-select fill-width">
+        <div class="form-select<?php if (!empty($search_country_id)) echo ' -active'; ?>">
           <select name="country" class="select-filter">
             <option value="">Filter by country...</option>
             <?php

@@ -46,8 +46,12 @@ input:not([type='submit']):not([type='reset']):not([type='radio']), textarea, se
   box-shadow: $btn-shadow;
 
   > select {
-    width: 100%;
     cursor: pointer;
+    width: 100%;
+  }
+
+  &.-active {
+    box-shadow: 0 0 0 3px $color-bootstrap-blue;
   }
 
   &:hover > select {

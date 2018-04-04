@@ -62,7 +62,7 @@ function show_pagination($page, $total, $params = array()) {
   </li>
   <?php endif; ?>
   <li>
-    <a href="<?php echo $url; ?>" class="btn btn--small"><?php echo $total; ?></a>
+    <a href="<?php echo $url; ?>" class="btn btn--small<?php echo ($i === $page) ? ' -active' : ''; ?>"><?php echo $total; ?></a>
   </li>
   <?php endif; ?>
   <li>

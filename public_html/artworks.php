@@ -45,7 +45,7 @@ require('../private/header.php');
           Artworks
         </h1>
         <form method="get" class="drop">
-          <input type="hidden" name="page" value="<?php echo $page; ?>">
+          <input type="hidden" name="page" value="1">
           <input type="hidden" name="sort" value="<?php echo $sort; ?>">
           <input type="hidden" name="sort_order" value="<?php echo $sort_order; ?>">
           <div class="form-inline drop-sm">
@@ -54,7 +54,7 @@ require('../private/header.php');
           </div>
           <div class="row">
             <div class="col col--6md drop-sm">
-              <div class="form-select fill-width">
+              <div class="form-select<?php if (!empty($search_status)) echo ' -active'; ?>">
                 <select name="status" class="select-filter">
                   <option value="">Filter by status...</option>
                   <?php
@@ -72,7 +72,7 @@ require('../private/header.php');
               </div>
             </div>
             <div class="col col--6md drop-sm">
-              <div class="form-select">
+              <div class="form-select<?php if (!empty($search_type_id)) echo ' -active'; ?>">
                 <select name="type" class="select-filter">
                   <option value="">Filter by type...</option>
                   <?php
@@ -92,7 +92,7 @@ require('../private/header.php');
           </div>
           <div class="row">
             <div class="col col--6md drop-sm">
-              <div class="form-select fill-width">
+              <div class="form-select<?php if (!empty($search_neighborhood_id)) echo ' -active'; ?>">
                 <select name="neighborhood" class="select-filter">
                   <option value="">Filter by neighborhood...</option>
                   <?php
@@ -110,7 +110,7 @@ require('../private/header.php');
               </div>
             </div>
             <div class="col col--6md drop-sm">
-              <div class="form-select">
+              <div class="form-select<?php if (!empty($search_owner_id)) echo ' -active'; ?>">
                 <select name="owner" class="select-filter">
                   <option value="">Filter by owner...</option>
                   <?php
@@ -215,6 +215,7 @@ require('../private/header.php');
             <?php
               // Show sorting options
               $url_params = $_GET;
+              $url_params['page'] = 1;
               $url_params['sort'] = 'title';
               $url_params['sort_order'] = 'asc';
               $sort_order_alt = $sort_order === 'asc' ? 'desc' : 'asc';
