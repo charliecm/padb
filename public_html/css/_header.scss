@@ -10,22 +10,37 @@
 .header-wrap {
   display: flex;
   align-items: baseline;
+  flex-direction: column;
   justify-content: space-between;
+
+  @include bp-gt($bp-md) {
+    flex-direction: row;
+  }
 }
 
-.header-title {
-  padding: rem($drop-margin * 1.5) 0 rem($drop-margin);
+.header-logo {
+  padding: rem($drop-margin) 0 rem($drop-margin / 2);
   color: inherit;
   font-family: $font-secondary;
   font-size: rem($type-scale-4);
   font-weight: 600;
+
+  &:hover {
+    color: $color-gray-1;
+  }
+
+  @include bp-gt($bp-md) {
+    padding: rem($drop-margin * 1.5) 0 rem($drop-margin);
+  }
 }
 
 .header-nav {
   flex-shrink: 0;
+  margin-bottom: rem($drop-margin / 2);
 
   ul {
     display: flex;
+    flex-wrap: wrap;
     margin: 0;
     padding-left: 0;
     list-style: none;
@@ -33,7 +48,7 @@
 
   a {
     display: block;
-    padding: 1rem 0 rem($drop-margin) 1.5rem;
+    padding: .25rem 1rem .25rem 0;
 
     &.-active {
       color: $color-text;
@@ -47,14 +62,37 @@
       padding-right: 0;
     }
   }
+
+  @include bp-gt($bp-md) {
+    margin-bottom: 0;
+
+    a {
+      padding: 1rem 0 rem($drop-margin) 1.5rem;
+    }
+  }
+}
+
+.header-nav__home {
+  display: none;
+
+  @include bp-gt($bp-md) {
+    display: block;
+  }
 }
 
 .header-status {
+  display: none;
   position: absolute;
   top: 0;
   right: 0;
+  margin-bottom: 0;
+  border-top: 0;
   padding-top: rem($drop-margin);
   padding-right: rem($l-wrap-padding);
   color: $color-gray-1;
   font-size: rem($type-scale-0);
+
+  @include bp-gt($bp-md) {
+    display: block;
+  }
 }

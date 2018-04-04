@@ -17,12 +17,12 @@ function flag_active($name) {
 ?>
 <header class="header">
   <div class="header-wrap l-wrap">
-    <a href="index.php" class="header-title">
+    <a href="index.php" class="header-logo">
       PADb
     </a>
     <nav class="header-nav">
       <ul>
-        <li>
+        <li class="header-nav__home">
           <a href="index.php"<?php flag_active('home'); ?>>Home</a>
         </li>
         <li>
@@ -53,9 +53,9 @@ function flag_active($name) {
       </ul>
     </nav>
     <?php if (is_logged_in()): ?>
-    <div class="header-status">
+    <p class="header-status">
       Logged in as <?php echo $_SESSION['user_name']; ?>
-    </div>
+    </p>
     <?php endif; ?>
   </div>
 </header>

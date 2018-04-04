@@ -107,11 +107,11 @@ require('../private/header.php');
     $offset_start = $offset + 1;
     $offset_end = $offset + $res1->num_rows;
   ?>
-  <div class="split drop">
-    <div>
+  <div class="list-sort">
+    <div class="drop-sm">
       Displaying <?php echo "$offset_start - $offset_end of $total_rows"; ?> artists<?php echo $filter_desc; ?>.
     </div>
-    <div>
+    <div class="drop">
       <?php
         // Show sorting options
         $url_params = $_GET;
@@ -134,15 +134,17 @@ require('../private/header.php');
         $artworks = intval($artist['artworks']);
     ?>
     <li class="list__item">
-      <a href="<?php echo $artist_url; ?>" class="list__thumbnail list__thumbnail--person" style="background-image:url('<?php echo $photo_url; ?>')"></a>
-      <div class="list__text">
-        <a href="<?php echo $artist_url; ?>" class="a-inherit">
-          <strong><?php echo $name; ?></strong>
-        </a><br>
-        <small>
-          <?php if (!empty($country)) echo 'From ' . $country . '.'; ?>
-          Has <?php echo $artworks; ?> artwork<?php if ($artworks > 1) echo 's'; ?>.
-        </small>
+      <div class="list__content">
+        <a href="<?php echo $artist_url; ?>" class="list__thumbnail list__thumbnail--person" style="background-image:url('<?php echo $photo_url; ?>')"></a>
+        <div class="list__text">
+          <a href="<?php echo $artist_url; ?>" class="a-inherit">
+            <strong><?php echo $name; ?></strong>
+          </a><br>
+          <small>
+            <?php if (!empty($country)) echo 'From ' . $country . '.'; ?>
+            Has <?php echo $artworks; ?> artwork<?php if ($artworks > 1) echo 's'; ?>.
+          </small>
+        </div>
       </div>
     </li>
     <?php endwhile; ?>

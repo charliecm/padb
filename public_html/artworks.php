@@ -44,8 +44,8 @@ require('../private/header.php');
       <input id="query" type="text" name="query" value="<?php echo htmlspecialchars($search_query); ?>" placeholder="Search artwork by name..." class="fill-width form-inline__input">
       <input type="submit" value="Search" class="btn btn--primary">
     </div>
-    <div class="row drop-sm">
-      <div class="col col--6">
+    <div class="row">
+      <div class="col col--6md drop-sm">
         <div class="form-select fill-width">
           <select name="status" class="select-filter">
             <option value="">Filter by status...</option>
@@ -63,7 +63,7 @@ require('../private/header.php');
           </select>
         </div>
       </div>
-      <div class="col col--6">
+      <div class="col col--6md drop-sm">
         <div class="form-select">
           <select name="type" class="select-filter">
             <option value="">Filter by type...</option>
@@ -82,8 +82,8 @@ require('../private/header.php');
         </div>
       </div>
     </div>
-    <div class="row drop-sm">
-      <div class="col col--6">
+    <div class="row">
+      <div class="col col--6md drop-sm">
         <div class="form-select fill-width">
           <select name="neighborhood" class="select-filter">
             <option value="">Filter by neighborhood...</option>
@@ -101,7 +101,7 @@ require('../private/header.php');
           </select>
         </div>
       </div>
-      <div class="col col--6">
+      <div class="col col--6md drop-sm">
         <div class="form-select">
           <select name="owner" class="select-filter">
             <option value="">Filter by owner...</option>
@@ -199,11 +199,11 @@ require('../private/header.php');
     $offset_start = $offset + 1;
     $offset_end = $offset + $res1->num_rows;
   ?>
-  <div class="split drop">
-    <div>
+  <div class="list-sort">
+    <div class="drop-sm">
       Displaying <?php echo "$offset_start - $offset_end of $total_rows"; ?><?php echo $filter_desc; ?>.
     </div>
-    <div>
+    <div class="drop">
       <?php
         // Show sorting options
         $url_params = $_GET;

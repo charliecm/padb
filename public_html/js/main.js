@@ -115,11 +115,7 @@ $(function() {
     var post = {};
     post[id] = isActive;
     $header.toggleClass('-active', isActive);
-    $.post('api/update-prefs.php', post,
-      function(data) {
-        console.log(data.preferences);
-      }
-    );
+    $.post('api/update-prefs.php', post);
   });
 
 });

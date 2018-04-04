@@ -91,7 +91,7 @@ require('../private/header.php');
   </h2>
   <ul class="list">
     <?php
-      $res = $db->query("SELECT A.artworkID, A.title, A.yearInstalled, A.photoURL
+      $res = $db->query("SELECT A.artworkID, A.title, A.status, A.yearInstalled, A.photoURL
         FROM artworks A, artistArtworks AA
         WHERE A.artworkID = AA.artworkID AND AA.artistID = $id
         ORDER BY title DESC");
@@ -99,6 +99,7 @@ require('../private/header.php');
         $artwork_id = $artwork['artworkID'];
         $url = 'artwork.php?id=' . $artwork['artworkID'];
         $title = htmlspecialchars(get_sanitized_text($artwork['title']));
+        $status = $artwork['status'];
         $year_installed = date('Y', strtotime($artwork['yearInstalled']));
         $photo_url = get_artwork_photo($artwork['photoURL']);
     ?>
@@ -107,7 +108,10 @@ require('../private/header.php');
       <div class="list__text">
         <a href="<?php echo $url; ?>" class="a-inherit">
           <strong><?php echo $title; ?></strong>
-        </a>
+        </a><br>
+        <small>
+          Installed in <?php echo $year_installed; ?><?php echo ($status === 'Removed') ? ' (Removed)' : ''; ?>
+        </small>
       </div>
     </li>
     <?php endwhile; ?>

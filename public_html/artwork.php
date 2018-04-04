@@ -63,9 +63,29 @@ require('../private/header.php');
     Artwork doesn't exist :(
   </p>
   <?php else: // Show artwork details ?>
-  <h1>
+  <h1<?php if (is_logged_in()) echo ' class="drop-sm"'; ?>>
     <?php echo $title; ?>
   </h1>
+  <?php
+    if (is_logged_in()):
+      // Show mark actions
+      $user_id = $_SESSION['user_id'];
+      $res = $db->query("SELECT status FROM marks WHERE memberID = $user_id AND artworkID = $id LIMIT 1");
+      $mark_status = '';
+      if ($row = $res->fetch_assoc()) {
+        $mark_status = $row['status'] ?? '';
+      };
+  ?>
+  <p class="drop--sm">
+    Mark as
+    <a href="#" data-artwork-id="<?php echo $id; ?>" data-status="To See" class="action-mark-artwork btn btn--small<?php if ($mark_status === 'To See') echo ' -active'; ?>">
+      To See
+    </a>
+    <a href="#" data-artwork-id="<?php echo $id; ?>" data-status="Have Seen" class="action-mark-artwork btn btn--small<?php if ($mark_status === 'Have Seen') echo ' -active'; ?>">
+      Have Seen
+    </a>
+  </p>
+  <?php endif; ?>
   <div class="row">
     <div class="col col--4md">
       <p class="listing__photo">
@@ -98,24 +118,6 @@ require('../private/header.php');
       </p>
     </div>
     <div class="col col--8md">
-      <?php if (is_logged_in()):
-        $user_id = $_SESSION['user_id'];
-        $res = $db->query("SELECT status FROM marks WHERE memberID = $user_id AND artworkID = $id LIMIT 1");
-        $mark_status = '';
-        if ($row = $res->fetch_assoc()) {
-          $mark_status = $row['status'] ?? '';
-        };
-      ?>
-      <p class="drop--sm">
-        Mark as
-        <a href="#" data-artwork-id="<?php echo $id; ?>" data-status="To See" class="action-mark-artwork btn btn--small<?php if ($mark_status === 'To See') echo ' -active'; ?>">
-          To See
-        </a>
-        <a href="#" data-artwork-id="<?php echo $id; ?>" data-status="Have Seen" class="action-mark-artwork btn btn--small<?php if ($mark_status === 'Have Seen') echo ' -active'; ?>">
-          Have Seen
-        </a>
-      </p>
-      <?php endif; ?>
       <p>
         <strong>Artists:</strong>
         <?php
