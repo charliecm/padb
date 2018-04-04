@@ -3,7 +3,7 @@
  * Populate Database
  */
 
-require('private/functions.php');
+require('../private/functions.php');
 
 const PATH_ARTIST = 'artist.csv';
 const PATH_ARTWORKS = 'public_art.csv';
