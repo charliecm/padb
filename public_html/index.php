@@ -56,7 +56,7 @@ require('../private/header.php');
         Dashboard
       </h1>
       <p>
-        Hello, <?php echo $_SESSION['user_name']; ?>! Public Art Database (PADb) is your source for public artworks in Vancouver. You can review artworks and artists you've found interesting here.
+        Public Art Database (PADb) is your source for public artworks in Vancouver. You can review artworks and artists you've found interesting here.
       </p>
       <h2>
         <a href="#" data-id="toSee" class="accordion__header<?php echo is_active('toSee') ? ' -active' : ''; ?>">
