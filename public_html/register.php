@@ -84,7 +84,8 @@ require('../private/header.php');
       </h2>
       <?php if ($register_failed): // Show error message when account creation failed in the server ?>
       <p class="text-error">
-        Sorry, there was a problem creating your account. Please try again!
+        Sorry, there was a problem creating your account.<br>
+        Please try again!
       </p>
       <?php endif;?>
       <form method="post" class="form--small drop">
