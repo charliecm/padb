@@ -8,7 +8,7 @@ This project is created by Charlie Chao for IAT352: Internet Computing Technolog
 
 ## Development
 
-To setup database, run `padb.sql` and copy `private/db-config.default.php` as `private/db-config.php` with the correct database credential.
+To setup database, run `padb.sql` and copy `private/config.default.php` as `private/config.php` with the correct database credential and any other API keys.
 
 For building the front-end, please install [node](https://nodejs.org) on your system. Start SASS watch and livereload by running:
 
